@@ -7,10 +7,11 @@
   * Ensure the GraphQL endpoint URL is accessible and accepting POST queries.
   * Test default GraphQL queries for posts and pages via GraphiQL IDE in WordPress dashboard.
 
-- [ ] **Task 1.2: Set up Custom Fields with Advanced Custom Fields (ACF)**
-  * Create Custom Post Type (CPT) for `Projects` in WordPress.
-  * Configure ACF Field Group for `Projects`: `summary` (Text), `tech_stack` (Repeater/Taxonomy), `featured_image` (Image), `github_url` (URL), `live_url` (URL), and `is_featured` (True/False).
-  * Configure ACF Field Group for `Experiences`: `role` (Text), `company` (Text), `start_date` (Date), `end_date` (Date/Present), and `description` (Textarea).
+- [X] **Task 1.2: Set up Custom Fields with Advanced Custom Fields (ACF)**
+  * Create Custom Post Type (CPT) for `Projects` in WordPress and add support for: `title`, `editor` and `featured_image`.
+  * Configure ACF Field Group for `Projects`: `summary` (Text), `tech_stack` (Select), `github_url` (URL), `live_url` (URL), `is_featured` (True/False) and `display_order` (Number).
+  * Create Custom Post Type (CPT) for `Experience` in WordPress.
+  * Configure ACF Field Group for `Experiences`: `company_name` (Text), `role` (Text), `start_date` (Date), `end_date` (Date/Present), and `key_achievements` (WYSIWYG editor).
   * Enable "Show in GraphQL" setting for all custom post types and ACF field groups.
 
 - [ ] **Task 1.3: Populate initial portfolio content**
