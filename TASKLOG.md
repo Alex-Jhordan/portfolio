@@ -2,7 +2,7 @@
 
 ## Phase 1: WordPress Headless Setup & GraphQL API
 
-- [ ] **Task 1.1: Install and configure WPGraphQL plugin**
+- [X] **Task 1.1: Install and configure WPGraphQL plugin**
   * Verify WPGraphQL plugin is active on the WordPress instance.
   * Ensure the GraphQL endpoint URL is accessible and accepting POST queries.
   * Test default GraphQL queries for posts and pages via GraphiQL IDE in WordPress dashboard.
