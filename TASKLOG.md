@@ -14,7 +14,7 @@
   * Configure ACF Field Group for `Experiences`: `company_name` (Text), `role` (Text), `start_date` (Date), `end_date` (Date/Present), and `key_achievements` (WYSIWYG editor).
   * Enable "Show in GraphQL" setting for all custom post types and ACF field groups.
 
-- [ ] **Task 1.3: Populate initial portfolio content**
+- [X] **Task 1.3: Populate initial portfolio content**
   * Add at least 3 real projects with complete ACF fields and imagery.
   * Add career milestones in `Experiences`.
   * Create 2 technical blog posts to test content rendering.
