@@ -23,7 +23,7 @@
 
 ## Phase 2: Frontend Foundation & Project Setup
 
-- [ ] **Task 2.1: Initialize Astro project**
+- [X] **Task 2.1: Initialize Astro project**
   * Create a clean Astro 5+ project in the repository root (`npm create astro@latest`).
   * Select the Strict TypeScript template during setup.
   * Configure project directory structure (`src/components`, `src/layouts`, `src/pages`, `src/styles`, `src/lib`, `src/types`).
