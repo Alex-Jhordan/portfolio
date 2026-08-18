@@ -34,7 +34,7 @@
   * Configure custom color tokens in Tailwind configuration: `seasalt` (`#F4F7F5`), `rich-black` (`#0E131F`), `rose-quartz` (`#A7A2A9`), `accent-red` (`#E60023`), and `selective-yellow` (`#FFBA08`).
   * Configure primary sans-serif and monospace font families in `src/styles/global.css`.
 
-- [ ] **Task 2.3: Build base layout and SEO metadata component**
+- [x] **Task 2.3: Build base layout and SEO metadata component**
   * Create `src/layouts/BaseLayout.astro` containing standard HTML5 structure, meta charset, viewport, and favicon references.
   * Implement dynamic `<head>` properties for page titles, meta descriptions, and OpenGraph social tags.
   * Import `global.css` into `BaseLayout.astro`.
