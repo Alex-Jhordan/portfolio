@@ -29,7 +29,7 @@
   * Configure project directory structure (`src/components`, `src/layouts`, `src/pages`, `src/styles`, `src/lib`, `src/types`).
   * Create `.env` and `.env.example` files containing `WORDPRESS_GRAPHQL_ENDPOINT`.
 
-- [ ] **Task 2.2: Configure Tailwind CSS and design tokens**
+- [X] **Task 2.2: Configure Tailwind CSS and design tokens**
   * Install Tailwind CSS integration in Astro.
   * Configure custom color tokens in Tailwind configuration: `seasalt` (`#F4F7F5`), `rich-black` (`#0E131F`), `rose-quartz` (`#A7A2A9`), `accent-red` (`#E60023`), and `selective-yellow` (`#FFBA08`).
   * Configure primary sans-serif and monospace font families in `src/styles/global.css`.
