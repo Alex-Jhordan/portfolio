@@ -1,0 +1,88 @@
+---
+const navigation = [
+  { label: 'Home', href: '/' },
+  { label: 'Projects', href: '/projects/' },
+  { label: 'About', href: '/about/' },
+  { label: 'Blog', href: '/blog/' },
+  { label: 'Contact', href: '/contact/' }
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="relative z-10 border-b border-rose-quartz/30 bg-seasalt text-rich-black">
+	<div class="mx-auto flex min-h-20 max-w-6xl items-center justify-between px-6">
+		<a class="inline-flex items-center gap-3 font-mono text-sm font-bold uppercase tracking-wide text-rich-black no-underline" href="/" aria-label="Portfolio home">
+			<span class="inline-flex size-8 items-center justify-center bg-accent-red font-sans text-lg text-seasalt" aria-hidden="true">A</span>
+			<span>Alex Jhordan</span>
+		</a>
+
+		<nav class="hidden items-center gap-7 min-[44rem]:flex" aria-label="Primary navigation">
+			{navigation.map((item) => (
+				<a class="font-mono text-xs text-rich-black/70 no-underline transition-colors duration-150 hover:text-accent-red focus-visible:text-accent-red" href={item.href} class:list={{ 'text-accent-red': currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href)) }}>
+					{item.label}
+				</a>
+			))}
+		</nav>
+
+		<button class="menu-toggle cursor-pointer flex size-11 items-center justify-center border border-rose-quartz bg-transparent p-0 text-rich-black transition-colors duration-150 hover:border-accent-red hover:text-accent-red focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-red min-[44rem]:hidden" type="button" aria-expanded="false" aria-controls="mobile-navigation">
+			<span class="sr-only">Open navigation menu</span>
+			<span aria-hidden="true" class="inline-flex flex-col gap-1.5"><span class="block h-0.5 w-4 bg-current"></span><span class="block h-0.5 w-4 bg-current"></span><span class="block h-0.5 w-4 bg-current"></span></span>
+		</button>
+	</div>
+
+	<nav id="mobile-navigation" class="max-h-0 overflow-hidden border-t border-rose-quartz/30 px-6 opacity-0 transition-[max-height,opacity] duration-300 ease-out min-[44rem]:hidden" aria-label="Mobile navigation" aria-hidden="true">
+		<div class="mx-auto max-w-6xl">
+			{navigation.map((item) => (
+				<a class="flex items-center justify-between border-b border-rose-quartz/30 py-4 font-mono text-sm text-rich-black/70 no-underline transition-colors duration-150 hover:text-accent-red focus-visible:text-accent-red" href={item.href} class:list={{ 'text-accent-red': currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href)) }}>
+					<span>{item.label}</span>
+					<span aria-hidden="true">↗</span>
+				</a>
+			))}
+		</div>
+	</nav>
+</header>
+
+<script>
+	const setupMobileMenu = () => {
+		const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+		const menu = document.querySelector<HTMLElement>('#mobile-navigation');
+		const menuLabel = toggle?.querySelector<HTMLSpanElement>('.sr-only');
+
+		if (!toggle || !menu || !menuLabel) return;
+
+		const setMenuState = (isOpen: boolean) => {
+			toggle.setAttribute('aria-expanded', String(isOpen));
+			toggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+			menuLabel.textContent = isOpen ? 'Close navigation menu' : 'Open navigation menu';
+			menu.setAttribute('aria-hidden', String(!isOpen));
+			menu.classList.toggle('max-h-0', !isOpen);
+			menu.classList.toggle('max-h-96', isOpen);
+			menu.classList.toggle('opacity-0', !isOpen);
+			menu.classList.toggle('opacity-100', isOpen);
+		};
+
+		toggle.addEventListener('click', () => {
+			const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+			setMenuState(!isOpen);
+		});
+
+		menu.querySelectorAll<HTMLAnchorElement>('a').forEach((link) => {
+			link.addEventListener('click', () => setMenuState(false));
+		});
+
+		document.addEventListener('keydown', (event: KeyboardEvent) => {
+			if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+				setMenuState(false);
+				toggle.focus();
+			}
+		});
+
+		window.addEventListener('resize', () => {
+			if (window.innerWidth >= 704) setMenuState(false);
+		});
+	};
+
+	setupMobileMenu();
+	document.addEventListener('astro:after-swap', setupMobileMenu);
+</script>

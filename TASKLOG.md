@@ -56,9 +56,9 @@
 
 ## Phase 4: UI Components & Core Layouts
 
-- [ ] **Task 4.1: Build Header and Navigation components**
-  * Create `src/components/Header.astro` with logo, desktop navigation links, and dark theme branding.
-  * Implement responsive mobile navigation drawer with lightweight client-side script (`<script lang="ts">`).
+- [x] **Task 4.1: Build Header and Navigation components**
+  * Create `src/components/Header.astro` with logo, desktop navigation links.
+  * Implement responsive mobile navigation drawer with lightweight client-side script.
 
 - [ ] **Task 4.2: Build Footer and TechBadge components**
   * Create `src/components/TechBadge.astro` accepting `name` prop to render small stylized technology tags.
