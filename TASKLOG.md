@@ -88,7 +88,7 @@
   * Implement `getStaticPaths()` fetching all project slugs from WPGraphQL.
   * Create `src/layouts/ProjectLayout.astro` to display full project overview, key challenges, architecture details, GitHub link, and live demo link.
 
-- [ ] **Task 5.4: Build About page (`src/pages/about.astro`)**
+- [x] **Task 5.4: Build About page (`src/pages/about.astro`)**
   * Create full biography page detailing software development background, current focus areas, and technical skills.
   * Include call-to-action link to download updated CV.
 
