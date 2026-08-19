@@ -1,0 +1,105 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import { fetchProjects } from "../../lib/graphql.ts";
+import type { Project } from "../../types/wordpress.ts";
+
+const { edges: projectEdges } = await fetchProjects();
+const allProjects: Project[] = projectEdges.map(({ node }) => node);
+
+const allTechnologies = Array.from(
+  new Set(
+    allProjects
+      .flatMap((project) => project.projectDetails?.techStack ?? [])
+      .filter((tech): tech is string => tech !== undefined && tech !== null)
+  )
+).sort();
+---
+
+<BaseLayout title="Projects | Alex Jordan" description="A comprehensive collection of my software development projects, from full-stack applications to specialized tools.">
+  <main>
+    {/* Hero Section */}
+    <section class="border-b border-rose-quartz/30 bg-seasalt">
+      <div class="mx-auto max-w-6xl px-6 py-16 sm:py-20">
+        <div class="max-w-2xl">
+          <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-accent-red">Portfolio</p>
+          <h1 class="mt-3 text-4xl font-semibold leading-tight">All projects</h1>
+          <p class="mt-4 text-lg leading-8 text-rich-black/70">
+            A curated collection of work showcasing my experience across full-stack development, modern tooling, and thoughtful design implementation.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* Tech Filter Section */}
+    <section class="border-b border-rose-quartz/30 bg-seasalt">
+    <div class="mx-auto max-w-6xl px-6 py-8">
+        <div class="flex flex-col gap-4">
+        <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-rich-black/70">Filter by technology</p>
+        <div class="flex flex-wrap gap-2">
+            <button
+            class="tech-filter-button rounded border border-rich-black/20 bg-seasalt px-3 py-2 font-mono text-xs uppercase tracking-widest text-rich-black transition-colors duration-200 hover:border-accent-red hover:text-accent-red data-[active=true]:bg-rich-black data-[active=true]:text-seasalt data-[active=true]:hover:border-rich-black/20 data-[active=true]:hover:text-seasalt"
+            data-tech="all"
+            data-active="true"
+            >
+            All projects
+            </button>
+            {allTechnologies.map((tech) => (
+            <button
+                class="tech-filter-button rounded border border-rich-black/20 bg-seasalt px-3 py-2 font-mono text-xs uppercase tracking-widest text-rich-black transition-colors duration-200 hover:border-accent-red hover:text-accent-red data-[active=true]:bg-rich-black data-[active=true]:text-seasalt data-[active=true]:hover:border-rich-black/20 data-[active=true]:hover:text-seasalt"
+                data-tech={tech}
+                data-active="false"
+            >
+                {tech}
+            </button>
+            ))}
+        </div>
+        </div>
+    </div>
+    </section>
+
+    {/* Projects Grid */}
+    <section class="bg-seasalt" aria-labelledby="projects-grid-title">
+      <div class="mx-auto max-w-6xl px-6 py-16 sm:py-20">
+        {allProjects.length > 0 ? (
+          <div id="projects-grid" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {allProjects.map((project) => (
+              <div
+                class="project-card"
+                data-technologies={project.projectDetails?.techStack?.join(",") ?? ""}
+              >
+                <ProjectCard project={project} />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p id="projects-grid-title" class="border-l-2 border-selective-yellow py-2 pl-4 text-sm leading-7 text-rich-black/70">
+            Projects will appear here soon. Check back later!
+          </p>
+        )}
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<script>
+  const filterButtons = document.querySelectorAll(".tech-filter-button");
+  const projectCards = document.querySelectorAll(".project-card");
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const selectedTech = button.getAttribute("data-tech") ?? "";
+
+      filterButtons.forEach((btn) => {
+        btn.setAttribute("data-active", btn === button ? "true" : "false");
+      });
+
+      projectCards.forEach((card) => {
+        const technologies = card.getAttribute("data-technologies")?.split(",") ?? [];
+        const isMatch = selectedTech === "all" || technologies.includes(selectedTech);
+        
+        card.classList.toggle("hidden", !isMatch);
+      });
+    });
+  });
+</script>

@@ -80,8 +80,8 @@
   * Fetch data using `GET_FEATURED_PROJECTS`, `GET_EXPERIENCES`, and recent posts inside Astro frontmatter.
   * Assemble `Hero`, featured `ProjectCard` grid, `ExperienceItem` timeline, and recent `PostCard` grid inside `BaseLayout`.
 
-- [ ] **Task 5.2: Build Projects directory page (`src/pages/projects/index.astro`)**
-  * Fetch all projects using `GET_ALL_PROJECTS`.
+- [x] **Task 5.2: Build Projects directory page (`src/pages/projects/index.astro`)**
+  * Fetch all projects using `GET_PROJECTS`.
   * Render complete grid of `ProjectCard` components with optional tech filtering UI.
 
 - [ ] **Task 5.3: Build dynamic Project detail page (`src/pages/projects/[slug].astro`)**
