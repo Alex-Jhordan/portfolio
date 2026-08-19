@@ -10,7 +10,15 @@ const { experience, current = false } = Astro.props;
 const details = experience.experienceDetails;
 const startDate = details?.startDate ?? '';
 const endDate = details?.endDate || (current ? 'Present' : '');
-const dateLabel = [startDate, endDate].filter(Boolean).join(' - ');
+const formatDate = (value: string): string => {
+  if (!value || value === 'Present') return value;
+
+  const date = new Date(value);
+  return Number.isNaN(date.getTime())
+    ? value
+    : new Intl.DateTimeFormat('en', { dateStyle: 'medium' }).format(date);
+};
+const dateLabel = [formatDate(startDate), formatDate(endDate)].filter(Boolean).join(' - ');
 ---
 
 <article class="relative grid gap-4 border-l border-rose-quartz/60 pb-10 pl-7 last:pb-0 sm:grid-cols-[8.5rem_minmax(0,1fr)] sm:gap-8 sm:pl-8">
@@ -30,7 +38,7 @@ const dateLabel = [startDate, endDate].filter(Boolean).join(' - ');
       {details?.role || experience.title}
     </h3>
     {details?.keyAchievements && (
-      <div class="prose mt-4 max-w-none text-sm leading-7 text-rich-black/70" set:html={details.keyAchievements}></div>
+      <div class="prose mt-4 max-w-none text-sm leading-7 text-rich-black/70 [&_ol]:list-decimal [&_ol]:pl-5 [&_ul]:list-disc [&_ul]:pl-5 [&_li+li]:mt-2" set:html={details.keyAchievements}></div>
     )}
   </div>
 </article>

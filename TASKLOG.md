@@ -76,8 +76,8 @@
 
 ## Phase 5: Pages & Routing Implementation
 
-- [ ] **Task 5.1: Build Home page (`src/pages/index.astro`)**
-  * Fetch data using `GET_FEATURED_PROJECTS`, `GET_ALL_EXPERIENCES`, and recent posts inside Astro frontmatter.
+- [x] **Task 5.1: Build Home page (`src/pages/index.astro`)**
+  * Fetch data using `GET_FEATURED_PROJECTS`, `GET_EXPERIENCES`, and recent posts inside Astro frontmatter.
   * Assemble `Hero`, featured `ProjectCard` grid, `ExperienceItem` timeline, and recent `PostCard` grid inside `BaseLayout`.
 
 - [ ] **Task 5.2: Build Projects directory page (`src/pages/projects/index.astro`)**
