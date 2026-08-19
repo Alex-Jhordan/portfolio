@@ -15,6 +15,10 @@ import type {
 
 const ENDPOINT = import.meta.env.WORDPRESS_GRAPHQL_ENDPOINT;
 
+const EMPTY_PROJECTS: ProjectsResponse = { edges: [] };
+const EMPTY_EXPERIENCES: ExperiencesResponse = { edges: [] };
+const EMPTY_POSTS: PostsResponse = { edges: [] };
+
 /**
  * Validate that the GraphQL endpoint is configured
  */
@@ -34,9 +38,9 @@ async function executeQuery<T>(
   query: string,
   variables?: Record<string, unknown>
 ): Promise<T> {
-  validateEndpoint();
-
   try {
+    validateEndpoint();
+
     const response = await fetch(ENDPOINT, {
       method: 'POST',
       headers: {
@@ -64,10 +68,14 @@ async function executeQuery<T>(
     return result.data as T;
   } catch (error) {
     if (error instanceof Error) {
-      console.error('[GraphQL Request Failed]', error.message);
+      console.error(`[GraphQL Request Failed] ${error.message}`);
       throw error;
     }
-    throw new Error('Unknown error occurred while fetching GraphQL data');
+    const unknownError = new Error(
+      'Unknown error occurred while fetching GraphQL data'
+    );
+    console.error(`[GraphQL Request Failed] ${unknownError.message}`);
+    throw unknownError;
   }
 }
 
@@ -228,48 +236,71 @@ export const GET_POST_BY_SLUG = `
  * Fetch projects
  */
 export async function fetchProjects(): Promise<ProjectsResponse> {
-  const data = await executeQuery<{ projects: ProjectsResponse }>(
-    GET_PROJECTS
-  );
-  return data.projects;
+  try {
+    const data = await executeQuery<{ projects: ProjectsResponse }>(GET_PROJECTS);
+    return data.projects;
+  } catch {
+    console.warn('[GraphQL Fallback] Using empty projects data.');
+    return EMPTY_PROJECTS;
+  }
 }
 
 /**
  * Fetch a single project by slug
  */
-export async function fetchProjectBySlug(slug: string): Promise<Project> {
-  const data = await executeQuery<{ projectBy: Project }>(
-    GET_PROJECT_BY_SLUG,
-    { slug }
-  );
-  return data.projectBy;
+export async function fetchProjectBySlug(slug: string): Promise<Project | null> {
+  try {
+    const data = await executeQuery<{ projectBy: Project | null }>(
+      GET_PROJECT_BY_SLUG,
+      { slug }
+    );
+    return data.projectBy;
+  } catch {
+    console.warn(`[GraphQL Fallback] No project data available for slug "${slug}".`);
+    return null;
+  }
 }
 
 /**
  * Fetch experiences
  */
 export async function fetchExperiences(): Promise<ExperiencesResponse> {
-  const data = await executeQuery<{ experiences: ExperiencesResponse }>(
-    GET_EXPERIENCES
-  );
-  return data.experiences;
+  try {
+    const data = await executeQuery<{ experiences: ExperiencesResponse }>(
+      GET_EXPERIENCES
+    );
+    return data.experiences;
+  } catch {
+    console.warn('[GraphQL Fallback] Using empty experiences data.');
+    return EMPTY_EXPERIENCES;
+  }
 }
 
 /**
  * Fetch posts
  */
 export async function fetchPosts(): Promise<PostsResponse> {
-  const data = await executeQuery<{ posts: PostsResponse }>(GET_POSTS);
-  return data.posts;
+  try {
+    const data = await executeQuery<{ posts: PostsResponse }>(GET_POSTS);
+    return data.posts;
+  } catch {
+    console.warn('[GraphQL Fallback] Using empty posts data.');
+    return EMPTY_POSTS;
+  }
 }
 
 /**
  * Fetch a single post by slug
  */
-export async function fetchPostBySlug(slug: string): Promise<Post> {
-  const data = await executeQuery<{ postBy: Post }>(
-    GET_POST_BY_SLUG,
-    { slug }
-  );
-  return data.postBy;
+export async function fetchPostBySlug(slug: string): Promise<Post | null> {
+  try {
+    const data = await executeQuery<{ postBy: Post | null }>(
+      GET_POST_BY_SLUG,
+      { slug }
+    );
+    return data.postBy;
+  } catch {
+    console.warn(`[GraphQL Fallback] No post data available for slug "${slug}".`);
+    return null;
+  }
 }

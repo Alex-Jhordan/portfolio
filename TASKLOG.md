@@ -48,7 +48,7 @@
   * Create `src/types/wordpress.ts` defining strict TypeScript interfaces for `Project`, `Experience`, `Post`.
   * Write static GraphQL query strings in `src/lib/graphql.ts`: `GET_PROJECTS`, `GET_EXPERIENCES`, `GET_POSTS`, `GET_PROJECT_BY_SLUG`, and `GET_POST_BY_SLUG`.
 
-- [ ] **Task 3.2: Implement error handling and build-time fallback data**
+- [x] **Task 3.2: Implement error handling and build-time fallback data**
   * Add try-catch blocks in `src/lib/graphql.ts` to log GraphQL errors clearly during static site generation.
   * Ensure clear error logging if environment variables are missing or if WPGraphQL endpoint is unreachable.
 
