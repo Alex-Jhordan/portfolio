@@ -1,0 +1,22 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+import { fetchProjectBySlug, fetchProjects } from '../../lib/graphql.ts';
+import type { Project } from '../../types/wordpress.ts';
+
+export async function getStaticPaths() {
+  const { edges } = await fetchProjects();
+
+  return edges.map(({ node }) => ({
+    params: { slug: node.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const project: Project | null = slug ? await fetchProjectBySlug(slug) : null;
+
+if (!project) {
+  return Astro.redirect('/404');
+}
+---
+
+<ProjectLayout project={project} />

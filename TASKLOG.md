@@ -84,7 +84,7 @@
   * Fetch all projects using `GET_PROJECTS`.
   * Render complete grid of `ProjectCard` components with optional tech filtering UI.
 
-- [ ] **Task 5.3: Build dynamic Project detail page (`src/pages/projects/[slug].astro`)**
+- [x] **Task 5.3: Build dynamic Project detail page (`src/pages/projects/[slug].astro`)**
   * Implement `getStaticPaths()` fetching all project slugs from WPGraphQL.
   * Create `src/layouts/ProjectLayout.astro` to display full project overview, key challenges, architecture details, GitHub link, and live demo link.
 

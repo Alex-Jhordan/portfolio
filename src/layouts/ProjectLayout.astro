@@ -1,0 +1,120 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import TechBadge from '../components/TechBadge.astro';
+import type { Project } from '../types/wordpress.ts';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const details = project.projectDetails;
+const technologies = details?.techStack ?? [];
+const description = details?.summary || `Explore ${project.title}, a software development project by Alex Jordan.`;
+---
+
+<BaseLayout title={`${project.title} | Alex Jordan`} description={description} image={project.featuredImage?.node.sourceUrl}>
+  <main>
+    <section class="border-b border-rose-quartz/30 bg-rich-black text-seasalt">
+      <div class="mx-auto max-w-6xl px-6 py-16 sm:py-24">
+        <a class="font-mono text-[10px] uppercase tracking-[0.22em] text-selective-yellow no-underline hover:text-seasalt" href="/projects/">
+          <span aria-hidden="true">←</span> Back to projects
+        </a>
+        <div class="mt-10 max-w-4xl">
+          <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-rose-quartz">Project detail</p>
+          <h1 class="mt-3 text-4xl font-semibold leading-tight sm:text-6xl">{project.title}</h1>
+          {details?.summary && <p class="mt-6 max-w-2xl text-lg leading-8 text-seasalt/70">{details.summary}</p>}
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-seasalt">
+      <div class="mx-auto grid max-w-6xl gap-12 px-6 py-16 lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-20 lg:py-24">
+        <div>
+          {project.featuredImage?.node && (
+            <img
+              class="aspect-video w-full border border-rose-quartz/50 object-cover"
+              src={project.featuredImage.node.sourceUrl}
+              alt={project.featuredImage.node.altText || `${project.title} preview`}
+              width={project.featuredImage.node.mediaDetails?.width}
+              height={project.featuredImage.node.mediaDetails?.height}
+            />
+          )}
+
+          {details?.content ? (
+            <div class="project-content mt-12 max-w-3xl text-base leading-8 text-rich-black/80" set:html={details.content} />
+          ) : (
+            <p class="mt-12 border-l-2 border-selective-yellow py-2 pl-4 text-sm leading-7 text-rich-black/70">
+              Detailed project notes will be available soon.
+            </p>
+          )}
+        </div>
+
+        <aside class="self-start border-t-2 border-accent-red pt-5 lg:sticky lg:top-8" aria-label="Project details">
+          {technologies.length > 0 && (
+            <div>
+              <h2 class="font-mono text-[10px] uppercase tracking-[0.22em] text-rich-black/60">Built with</h2>
+              <div class="mt-4 flex flex-wrap gap-2">
+                {technologies.map((technology) => <TechBadge name={technology} />)}
+              </div>
+            </div>
+          )}
+
+          {(details?.githubUrl || details?.liveUrl) && (
+            <div class="mt-8 flex flex-col items-start gap-3">
+              {details.githubUrl && (
+                <a class="font-mono text-xs uppercase tracking-widest text-rich-black no-underline underline-offset-4 hover:text-accent-red hover:underline" href={details.githubUrl} target="_blank" rel="noreferrer">
+                  GitHub <span aria-hidden="true">↗</span>
+                </a>
+              )}
+              {details.liveUrl && (
+                <a class="font-mono text-xs uppercase tracking-widest text-rich-black no-underline underline-offset-4 hover:text-accent-red hover:underline" href={details.liveUrl} target="_blank" rel="noreferrer">
+                  Live demo <span aria-hidden="true">↗</span>
+                </a>
+              )}
+            </div>
+          )}
+        </aside>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .project-content :global(h2),
+  .project-content :global(h3) {
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-rich-black);
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  .project-content :global(h2) {
+    font-size: 1.75rem;
+  }
+
+  .project-content :global(h3) {
+    font-size: 1.25rem;
+  }
+
+  .project-content :global(p) {
+    margin-top: 1rem;
+  }
+
+  .project-content :global(a) {
+    color: var(--color-accent-red);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .project-content :global(ul),
+  .project-content :global(ol) {
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  .project-content :global(li) {
+    margin-top: 0.5rem;
+  }
+</style>
