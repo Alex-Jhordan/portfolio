@@ -43,10 +43,10 @@
 
 ## Phase 3: Data Layer & API Integration
 
-- [ ] **Task 3.1: Configure GraphQL client and TypeScript interfaces**
+- [x] **Task 3.1: Configure GraphQL client and TypeScript interfaces**
   * Create `src/lib/graphql.ts` helper using native `fetch` to send HTTP POST requests to `WORDPRESS_GRAPHQL_ENDPOINT`.
-  * Create `src/types/wordpress.ts` defining strict TypeScript interfaces for `Project`, `Experience`, `Post`, and `ACFFields`.
-  * Write static GraphQL query strings in `src/lib/graphql.ts`: `GET_ALL_PROJECTS`, `GET_FEATURED_PROJECTS`, `GET_ALL_EXPERIENCES`, `GET_ALL_POSTS`, `GET_PROJECT_BY_SLUG`, and `GET_POST_BY_SLUG`.
+  * Create `src/types/wordpress.ts` defining strict TypeScript interfaces for `Project`, `Experience`, `Post`.
+  * Write static GraphQL query strings in `src/lib/graphql.ts`: `GET_PROJECTS`, `GET_EXPERIENCES`, `GET_POSTS`, `GET_PROJECT_BY_SLUG`, and `GET_POST_BY_SLUG`.
 
 - [ ] **Task 3.2: Implement error handling and build-time fallback data**
   * Add try-catch blocks in `src/lib/graphql.ts` to log GraphQL errors clearly during static site generation.
