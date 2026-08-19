@@ -1,0 +1,49 @@
+---
+import TechBadge from './TechBadge.astro';
+import type { Project } from '../types/wordpress.ts';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const details = project.projectDetails;
+const technologies = details?.techStack ?? [];
+const projectUrl = `/projects/${project.slug}/`;
+---
+
+<article class="group flex h-full flex-col border border-rose-quartz/50 bg-seasalt text-rich-black transition-colors duration-200 hover:border-accent-red">
+  <a class="block overflow-hidden border-b border-rose-quartz/50 bg-rich-black focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-selective-yellow" href={projectUrl} aria-label={`View ${project.title} project`}>
+    {project.featuredImage?.node ? (
+      <img
+        class="aspect-[16/10] w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+        src={project.featuredImage.node.sourceUrl}
+        alt={project.featuredImage.node.altText || `${project.title} preview`}
+        width={project.featuredImage.node.mediaDetails?.width}
+        height={project.featuredImage.node.mediaDetails?.height}
+        loading="lazy"
+      />
+    ) : (
+      <div class="flex aspect-[16/10] items-end p-5" aria-hidden="true">
+        <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-selective-yellow">Project preview</span>
+      </div>
+    )}
+  </a>
+
+  <div class="flex flex-1 flex-col p-6">
+    <div class="flex items-start justify-between gap-4">
+      <h3 class="text-2xl font-semibold leading-tight">
+        <a class="no-underline hover:text-accent-red focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-red" href={projectUrl}>{project.title}</a>
+      </h3>
+      <span class="font-mono text-xl text-accent-red" aria-hidden="true">↗</span>
+    </div>
+
+    {details?.summary && <p class="mt-4 text-sm leading-7 text-rich-black/70">{details.summary}</p>}
+
+    {technologies.length > 0 && (
+      <div class="mt-auto flex flex-wrap gap-2 pt-6" aria-label="Technologies used">
+        {technologies.map((technology) => <TechBadge name={technology} />)}
+      </div>
+    )}
+  </div>
+</article>

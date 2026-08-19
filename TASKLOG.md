@@ -68,7 +68,7 @@
   * Create `src/components/Hero.astro` presenting main intro headline, short bio, tech stack badges, and primary call-to-action buttons.
   * Create `src/components/ExperienceItem.astro` rendering timeline nodes with dates, company name, role title, and responsibilities.
 
-- [ ] **Task 4.4: Build ProjectCard and PostCard components**
+- [x] **Task 4.4: Build ProjectCard and PostCard components**
   * Create `src/components/ProjectCard.astro` displaying project thumbnail image, title, summary, `TechBadge` list, and dynamic detail link.
   * Create `src/components/PostCard.astro` displaying article title, publish date, estimated read time, summary, and article link.
 
