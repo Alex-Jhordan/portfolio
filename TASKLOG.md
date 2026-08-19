@@ -60,7 +60,7 @@
   * Create `src/components/Header.astro` with logo, desktop navigation links.
   * Implement responsive mobile navigation drawer with lightweight client-side script.
 
-- [ ] **Task 4.2: Build Footer and TechBadge components**
+- [x] **Task 4.2: Build Footer and TechBadge components**
   * Create `src/components/TechBadge.astro` accepting `name` prop to render small stylized technology tags.
   * Create `src/components/Footer.astro` with copyright statement, social media links (GitHub, LinkedIn), and status indicator.
 
