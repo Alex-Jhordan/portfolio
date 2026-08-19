@@ -64,7 +64,7 @@
   * Create `src/components/TechBadge.astro` accepting `name` prop to render small stylized technology tags.
   * Create `src/components/Footer.astro` with copyright statement, social media links (GitHub, LinkedIn), and status indicator.
 
-- [ ] **Task 4.3: Build Hero and ExperienceItem components**
+- [x] **Task 4.3: Build Hero and ExperienceItem components**
   * Create `src/components/Hero.astro` presenting main intro headline, short bio, tech stack badges, and primary call-to-action buttons.
   * Create `src/components/ExperienceItem.astro` rendering timeline nodes with dates, company name, role title, and responsibilities.
 

@@ -1,9 +1,19 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
 ---
 
 <BaseLayout title="Alex Jordan | Developer Portfolio" description="The portfolio and technical blog of Alex Jordan.">
 	<main>
-		<h1>Alex Jordan</h1>
+		<Hero
+			eyebrow="Alex Jhordan / Full-stack developer"
+			title="I build clear, resilient digital products."
+			description="I turn complex requirements into thoughtful interfaces and dependable systems, with a focus on performance, accessibility, and useful details."
+			technologies={['Astro', 'TypeScript', 'WordPress', 'Tailwind CSS']}
+			links={[
+				{ label: 'View projects', href: '/projects/' },
+				{ label: 'Get in touch', href: '/contact/' }
+			]}
+		/>
 	</main>
 </BaseLayout>

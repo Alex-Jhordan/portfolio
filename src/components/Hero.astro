@@ -1,0 +1,63 @@
+---
+import TechBadge from './TechBadge.astro';
+
+interface HeroLink {
+  label: string;
+  href: string;
+  external?: boolean;
+}
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  description: string;
+  technologies: string[];
+  links: HeroLink[];
+}
+
+const { eyebrow, title, description, technologies, links } = Astro.props;
+---
+
+<section class="relative overflow-hidden border-b border-rose-quartz/30 bg-rich-black text-seasalt" aria-labelledby="hero-title">
+  <div class="mx-auto grid max-w-6xl gap-12 px-6 py-20 sm:py-28 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-end lg:gap-20">
+    <div class="max-w-3xl">
+      <p class="mb-6 font-mono text-[10px] uppercase tracking-[0.24em] text-selective-yellow">
+        {eyebrow}
+      </p>
+      <h1 id="hero-title" class="max-w-3xl text-5xl font-semibold leading-[0.98] tracking-tight sm:text-7xl">
+        {title}
+      </h1>
+      <p class="mt-8 max-w-xl text-base leading-7 text-seasalt/70 sm:text-lg">
+        {description}
+      </p>
+
+      <div class="mt-10 flex flex-wrap items-center gap-3">
+        {links.map((link, index) => (
+          <a
+            class:list={[
+              'inline-flex min-h-12 items-center gap-3 border px-5 font-mono text-xs uppercase tracking-[0.14em] no-underline transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-selective-yellow',
+              index === 0
+                ? 'border-accent-red bg-accent-red text-seasalt hover:border-selective-yellow hover:bg-selective-yellow hover:text-rich-black'
+                : 'border-seasalt/40 text-seasalt hover:border-selective-yellow hover:text-selective-yellow'
+            ]}
+            href={link.href}
+            target={link.external ? '_blank' : undefined}
+            rel={link.external ? 'noreferrer' : undefined}
+          >
+            <span>{link.label}</span>
+            <span aria-hidden="true">{link.external ? '↗' : '→'}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <aside class="border-l-2 border-accent-red pl-5 lg:mb-1" aria-label="Core technologies">
+      <p class="font-mono text-[10px] uppercase tracking-[0.2em] text-rose-quartz">
+        Working with
+      </p>
+      <div class="mt-4 flex flex-wrap gap-2">
+        {technologies.map((technology) => <TechBadge name={technology} />)}
+      </div>
+    </aside>
+  </div>
+</section>

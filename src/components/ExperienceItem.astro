@@ -1,0 +1,36 @@
+---
+import type { Experience } from '../types/wordpress.ts';
+
+interface Props {
+  experience: Experience;
+  current?: boolean;
+}
+
+const { experience, current = false } = Astro.props;
+const details = experience.experienceDetails;
+const startDate = details?.startDate ?? '';
+const endDate = details?.endDate || (current ? 'Present' : '');
+const dateLabel = [startDate, endDate].filter(Boolean).join(' - ');
+---
+
+<article class="relative grid gap-4 border-l border-rose-quartz/60 pb-10 pl-7 last:pb-0 sm:grid-cols-[8.5rem_minmax(0,1fr)] sm:gap-8 sm:pl-8">
+  <span class="absolute -left-1.25 top-1 size-2.5 bg-accent-red ring-4 ring-seasalt" aria-hidden="true"></span>
+
+  <div>
+    <p class="font-mono text-[10px] uppercase tracking-[0.16em] text-rose-quartz">
+      {dateLabel || 'Experience'}
+    </p>
+  </div>
+
+  <div class="max-w-2xl">
+    <p class="font-mono text-xs uppercase tracking-[0.14em] text-accent-red">
+      {details?.companyName || 'Independent'}
+    </p>
+    <h3 class="mt-2 text-2xl font-semibold leading-tight text-rich-black">
+      {details?.role || experience.title}
+    </h3>
+    {details?.keyAchievements && (
+      <div class="prose mt-4 max-w-none text-sm leading-7 text-rich-black/70" set:html={details.keyAchievements}></div>
+    )}
+  </div>
+</article>
