@@ -1,0 +1,22 @@
+---
+import PostLayout from '../../layouts/PostLayout.astro';
+import { fetchPostBySlug, fetchPosts } from '../../lib/graphql.ts';
+import type { Post } from '../../types/wordpress.ts';
+
+export async function getStaticPaths() {
+  const { edges } = await fetchPosts();
+
+  return edges.map(({ node }) => ({
+    params: { slug: node.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const post: Post | null = slug ? await fetchPostBySlug(slug) : null;
+
+if (!post) {
+  return Astro.redirect('/404');
+}
+---
+
+<PostLayout post={post} />

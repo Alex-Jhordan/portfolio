@@ -92,8 +92,8 @@
   * Create full biography page detailing software development background, current focus areas, and technical skills.
   * Include call-to-action link to download updated CV.
 
-- [ ] **Task 5.5: Build Blog directory and dynamic Post page**
-  * Create `src/pages/blog/index.astro` listing all articles fetched via `GET_ALL_POSTS`.
+- [x] **Task 5.5: Build Blog directory and dynamic Post page**
+  * Create `src/pages/blog/index.astro` listing all articles fetched via `GET_POSTS`.
   * Create `src/pages/blog/[slug].astro` using `getStaticPaths()` and `src/layouts/PostLayout.astro` to render HTML post content safely.
 
 - [ ] **Task 5.6: Build Contact page (`src/pages/contact.astro`)**
