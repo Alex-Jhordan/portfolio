@@ -96,8 +96,8 @@
   * Create `src/pages/blog/index.astro` listing all articles fetched via `GET_POSTS`.
   * Create `src/pages/blog/[slug].astro` using `getStaticPaths()` and `src/layouts/PostLayout.astro` to render HTML post content safely.
 
-- [ ] **Task 5.6: Build Contact page (`src/pages/contact.astro`)**
-  * Render direct contact links, social media handles, email address, and professional profiles (GitHub, LinkedIn).
+- [x] **Task 5.6: Build Contact page (`src/pages/contact.astro`)**
+  * Render a contact form and professional profiles (GitHub, LinkedIn).
 
 ---
 

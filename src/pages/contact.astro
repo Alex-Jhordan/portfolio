@@ -1,0 +1,112 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const socialLinks = [
+  {
+    label: "GitHub",
+    href: "https://github.com/Alex-Jhordan",
+    value: "github.com/Alex-Jhordan",
+    ariaLabel: "Visit Alex Jhordan on GitHub"
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/alex-jhordan",
+    value: "linkedin.com/in/alex-jhordan",
+    ariaLabel: "Visit Alex Jhordan on LinkedIn"
+  }
+];
+
+const FORMSPREE_FORM_ID = "xeajvplb";
+---
+
+<BaseLayout title="Contact Alex Jhordan | Developer Portfolio" description="Get in touch with Alex Jhordan. Send a message or connect on GitHub and LinkedIn.">
+	<main>
+		<section class="border-b border-rich-black/20 bg-rich-black text-seasalt" aria-labelledby="contact-title">
+			<div class="mx-auto max-w-6xl px-6 py-20 sm:py-28">
+				<div class="max-w-3xl">
+				<h1 id="contact-title" class="text-5xl font-semibold leading-[1.05] tracking-tight sm:text-7xl">Let's work together.</h1>
+					<p class="mt-8 max-w-2xl text-lg leading-8 text-seasalt/75">I'm always interested in hearing about interesting projects and opportunities. Reach out directly or connect with me on professional networks.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="bg-seasalt py-20 sm:py-28" aria-labelledby="contact-form-title">
+			<div class="mx-auto max-w-2xl px-6">
+				<h2 id="contact-form-title" class="font-mono text-[10px] uppercase tracking-[0.22em] text-accent-red">Send a message</h2>
+				
+				<form
+					action={`https://formspree.io/f/${FORMSPREE_FORM_ID}`}
+					method="POST"
+					class="mt-8 space-y-6"
+				>
+					<div>
+						<label for="name" class="block font-mono text-sm font-semibold uppercase tracking-[0.08em] text-rich-black/60">Name</label>
+						<input
+							type="text"
+							id="name"
+							name="name"
+							required
+							class="mt-2 w-full border border-rich-black/20 bg-white px-4 py-3 text-rich-black placeholder-rich-black/40 transition-colors duration-150 focus-visible:border-accent-red focus-visible:outline-none"
+							placeholder="Your name"
+						/>
+					</div>
+
+					<div>
+						<label for="email" class="block font-mono text-sm font-semibold uppercase tracking-[0.08em] text-rich-black/60">Email</label>
+						<input
+							type="email"
+							id="email"
+							name="email"
+							required
+							class="mt-2 w-full border border-rich-black/20 bg-white px-4 py-3 text-rich-black placeholder-rich-black/40 transition-colors duration-150 focus-visible:border-accent-red focus-visible:outline-none"
+							placeholder="your@email.com"
+						/>
+					</div>
+
+					<div>
+						<label for="message" class="block font-mono text-sm font-semibold uppercase tracking-[0.08em] text-rich-black/60">Message</label>
+						<textarea
+							id="message"
+							name="message"
+							required
+							rows="6"
+							class="mt-2 w-full border border-rich-black/20 bg-white px-4 py-3 text-rich-black placeholder-rich-black/40 transition-colors duration-150 focus-visible:border-accent-red focus-visible:outline-none"
+							placeholder="Tell me about your project..."
+						></textarea>
+					</div>
+
+					<button
+						type="submit"
+						class="inline-flex min-h-12 items-center gap-2 border border-rich-black bg-rich-black px-6 font-mono text-xs uppercase tracking-[0.14em] text-seasalt no-underline transition-colors duration-150 hover:bg-seasalt hover:text-rich-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rich-black"
+					>
+						Send message <span aria-hidden="true">↗</span>
+					</button>
+				</form>
+			</div>
+		</section>
+
+		<section class="border-t border-rich-black/20 bg-rich-black text-seasalt" aria-labelledby="social-profiles-title">
+			<div class="mx-auto max-w-6xl px-6 py-16 sm:py-20">
+				<h2 id="social-profiles-title" class="font-mono text-[10px] uppercase tracking-[0.22em] text-selective-yellow">Professional profiles</h2>
+				
+				<div class="mt-8 grid gap-6 sm:grid-cols-2">
+					{socialLinks.map((link) => (
+							<a
+								href={link.href}
+								target="_blank"
+								rel="noreferrer"
+								aria-label={link.ariaLabel}
+								class="group flex flex-col gap-3 border border-rose-quartz/30 bg-rich-black/50 p-6 transition-all duration-150 hover:border-accent-red hover:bg-rich-black"
+							>
+								<h3 class="font-mono text-sm font-semibold uppercase tracking-[0.08em] text-selective-yellow group-hover:text-selective-yellow">{link.label}</h3>
+								<p class="text-seasalt/80 transition-colors duration-150 group-hover:text-seasalt">{link.value}</p>
+								<div class="flex items-center justify-end pt-2">
+									<span aria-hidden="true" class="text-seasalt/50 transition-colors duration-150 group-hover:text-seasalt">↗</span>
+								</div>
+							</a>
+						))}
+				</div>
+			</div>
+		</section>
+	</main>
+</BaseLayout>
