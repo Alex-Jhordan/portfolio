@@ -37,6 +37,10 @@ Experience entries should support:
 - A description of responsibilities or achievements.
 - An ordering value or another consistent ordering convention for the home-page timeline.
 
+### Experience timeline ordering
+
+Experience entries use the `order` field for timeline placement. Lower numeric values are displayed first (ascending order), so a current role can use a lower value than previous roles. Keep the convention consistent for every future entry and omit `endDate` when `current` is `true`.
+
 ### Blog articles
 
 Article entries should support:

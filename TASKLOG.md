@@ -43,7 +43,7 @@
   - Add meaningful alternative text for informative images, use empty alternative text only for decorative images, and provide poster images for video where appropriate.
   - Keep all demonstration data and assets clearly labeled as fictional and replaceable; never present them as verified owner projects.
 
-- [ ] **Task 2.3: Add professional experience entries**
+- [X] **Task 2.3: Add professional experience entries**
   - Create Markdown entries under `src/content/experience/` using stable kebab-case filenames.
   - Create at least one clearly identified fictional experience entry using a sample role, organization, ISO-formatted dates, and lorem ipsum-style responsibilities or achievements.
   - Populate the demonstration entry with the required schema fields and representative optional values, including a current-role example only if the schema supports it.
