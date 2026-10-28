@@ -6,9 +6,9 @@
   - Create the Astro project in the repository root using the current stable Astro release and its strict TypeScript setup. To initialize it directly in the current root directory, run `pnpm create astro@latest . --template minimal`.
   - Use pnpm as the package manager and verify that `package.json` and `pnpm-lock.yaml` exist so installs are reproducible. If dependencies are not installed yet, run `pnpm install` to generate or update the lockfile.
   - Set the Node.js engine requirement in `package.json` to a version supported by the selected Astro release and available in Vercel; confirm this manually.
-  - Add `@astrojs/check` and `typescript` as development dependencies so `astro check` can validate the application. Run `pnpm add --save-dev @astrojs/check typescript`.
+  - Add `@astrojs/check`, `typescript`, and `@types/node` as development dependencies so `astro check` can validate the Astro application and Node APIs in strict TypeScript mode. Run `pnpm add --save-dev @astrojs/check typescript @types/node`.
   - Add the standard Astro scripts for local development, production build, preview, and type checking. Define the type-check script as `check` with the command `astro check`; for example, run `pnpm pkg set scripts.check="astro check"`.
-  - Keep `tsconfig.json` in strict mode and resolve project diagnostics rather than weakening compiler settings; verify that it extends `astro/tsconfigs/strict`.
+  - Keep `tsconfig.json` in strict mode and resolve project diagnostics rather than weakening compiler settings; verify that it extends `astro/tsconfigs/strict` and includes Node type definitions for build-time filesystem APIs.
   - Create the initial application directories `src/components/`, `src/layouts/`, `src/pages/`, `src/styles/`, and `src/content/`.
 
 - [X] **Task 1.2: Configure Tailwind CSS and the site design tokens**
@@ -97,9 +97,10 @@
   - Write clearly identified fictional Spanish placeholder copy for the introduction, calls to action, section descriptions, and empty states; use `TO_REPLACE` for the displayed owner or portfolio name.
   - Link each section to its corresponding directory and render intentional empty states if a collection has no public entries.
 
-- [ ] **Task 4.2: Build the about page and CV download link**
+- [X] **Task 4.2: Build the about page and CV download link**
   - Create `src/pages/about.astro` with clearly identified fictional Spanish biography and skills content, using lorem ipsum-style copy and sample technologies rather than inventing facts about a real person.
   - Add a visible indication that the CV asset is pending replacement; do not create or link to a fabricated CV file and do not leave a download link that points to a missing asset.
+  - Use Node filesystem APIs during the Astro build to detect whether `public/cv/cv.pdf` exists, with Node types enabled from the project setup so strict TypeScript diagnostics remain valid.
   - Place an HTML `TODO` comment next to the CV placeholder identifying the required local asset path and instructing the maintainer to replace the placeholder with the real CV before enabling the download link.
   - Add the download link only when a real CV asset is supplied, and ensure it points to the final public path.
   - Keep the about-page layout responsive and provide page-specific title and description metadata through `BaseLayout`.

@@ -1,0 +1,106 @@
+---
+import { existsSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const cvPath = fileURLToPath(new URL("../../public/cv/cv.pdf", import.meta.url));
+const hasRealCv = existsSync(cvPath);
+
+const skills = [
+	"Astro",
+	"TypeScript",
+	"JavaScript",
+	"HTML y CSS",
+	"Tailwind CSS",
+	"Git",
+	"Pruebas y calidad",
+];
+---
+
+<BaseLayout
+	title="Sobre mí | Portfolio name TO_REPLACE"
+	description="Biografía ficticia, habilidades técnicas de ejemplo y estado pendiente del CV para Portfolio name TO_REPLACE."
+>
+	<section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20" aria-labelledby="titulo-sobre-mi">
+		<header class="max-w-3xl">
+			<p class="font-mono text-sm uppercase tracking-wide text-accent-red">Perfil ficticio de demostración</p>
+			<h1 id="titulo-sobre-mi" class="mt-3 text-4xl font-bold tracking-tight text-rich-black sm:text-5xl">
+				Sobre Portfolio name TO_REPLACE
+			</h1>
+			<p class="mt-5 text-lg leading-8 text-rich-black/80">
+				Esta biografía utiliza contenido de ejemplo y no afirma experiencia, formación ni datos reales sobre una persona.
+			</p>
+		</header>
+
+		<div class="mt-10 grid gap-10 lg:grid-cols-[minmax(0,2fr)_minmax(18rem,1fr)]">
+			<section aria-labelledby="biografia" class="rounded-sm border border-rose-quartz/40 bg-white p-6 sm:p-8">
+				<h2 id="biografia" class="text-2xl font-bold text-rich-black">Biografía</h2>
+				<div class="mt-5 max-w-2xl space-y-4 leading-8 text-rich-black/75">
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Este texto de demostración describe de forma ficticia a una persona interesada en desarrollar productos digitales claros, accesibles y fáciles de mantener.
+					</p>
+					<p>
+						Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium. Sustituye este contenido por una presentación real, verificable y escrita en español antes de publicar el portfolio.
+					</p>
+					<p>
+						Su enfoque representativo combina diseño de interfaces, implementación web y colaboración técnica. Las responsabilidades, proyectos, formación y logros mostrados aquí son únicamente ejemplos.
+					</p>
+				</div>
+			</section>
+
+			<aside class="space-y-6" aria-label="Información adicional">
+				<section aria-labelledby="habilidades" class="rounded-sm bg-rich-black p-6 text-seasalt sm:p-8">
+					<h2 id="habilidades" class="text-2xl font-bold">Tecnologías de ejemplo</h2>
+					<p class="mt-3 text-sm leading-7 text-seasalt/75">
+						Lista ficticia de habilidades que debe reemplazarse por competencias reales.
+					</p>
+					<ul class="mt-5 flex flex-wrap gap-2" aria-label="Lista de tecnologías demostrativas">
+						{skills.map((skill) => (
+							<li class="rounded-sm border border-seasalt/30 px-3 py-2 font-mono text-sm">
+								{skill}
+							</li>
+						))}
+					</ul>
+				</section>
+
+				<section aria-labelledby="cv" class="rounded-sm border border-selective-yellow bg-selective-yellow/10 p-6">
+					<h2 id="cv" class="text-xl font-bold text-rich-black">Currículum vitae</h2>
+
+					{hasRealCv ? (
+						<a
+							href="/cv/cv.pdf"
+							download
+							class="mt-4 inline-flex min-h-12 items-center justify-center rounded-sm bg-accent-red px-5 py-3 font-semibold text-white hover:bg-red-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-red"
+						>
+							Descargar CV
+							<span aria-hidden="true" class="ml-2">↓</span>
+						</a>
+					) : (
+						<div class="mt-4">
+							<p class="font-semibold text-rich-black">CV pendiente de reemplazo.</p>
+							<p class="mt-2 leading-7 text-rich-black/75">
+								Todavía no se ha proporcionado un CV real. El enlace de descarga permanecerá oculto hasta que exista el archivo correspondiente.
+							</p>
+							<!-- TODO: Replace public/cv/cv.pdf with the owner's real CV before enabling the download link in this placeholder. Remove this pending notice and TODO comment once the real PDF is supplied. -->
+						</div>
+					)}
+				</section>
+			</aside>
+		</div>
+
+		<nav aria-label="Enlaces de la sección sobre mí" class="mt-10 flex flex-col gap-3 border-t border-rose-quartz/40 pt-8 sm:flex-row">
+			<a
+				href="/projects/"
+				class="inline-flex min-h-12 items-center justify-center rounded-sm bg-accent-red px-5 py-3 font-semibold text-white hover:bg-red-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-red"
+			>
+				Ver proyectos
+			</a>
+			<a
+				href="/contact/"
+				class="inline-flex min-h-12 items-center justify-center rounded-sm border border-rich-black px-5 py-3 font-semibold text-rich-black hover:border-accent-red hover:text-accent-red focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-red"
+			>
+				Ir a contacto
+			</a>
+		</nav>
+	</section>
+</BaseLayout>
