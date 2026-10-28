@@ -34,7 +34,7 @@
   - Use local content loaders and Markdown entries; configure asset image schemas where needed so project media can be validated and optimized by Astro.
   - Ensure invalid required values fail the build with useful schema errors and optional fields can be omitted safely.
 
-- [ ] **Task 2.2: Add project entries and organize their local media**
+- [X] **Task 2.2: Add project entries and organize their local media**
   - Create project entry files under `src/content/projects/` with lowercase kebab-case filenames that match stable public slugs.
   - Create at least one clearly identified demonstration project using fictional titles, lorem ipsum-style summary and description, sample technologies, and optional links with `TO_REPLACE` in their URLs; do not use content from another portfolio or imply that the fictional project is real.
   - Populate the demonstration entry with every required schema field and representative optional values, including featured status and display order, so it demonstrates how the project collection is used.

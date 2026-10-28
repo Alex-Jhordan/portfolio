@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title description">
+  <title id="title">Proyecto ficticio de demostración</title>
+  <desc id="description">Marcador visual reemplazable con la etiqueta demostración.</desc>
+  <rect width="1200" height="675" fill="#F4F7F5"/>
+  <rect x="24" y="24" width="1152" height="627" rx="24" fill="#0E131F" stroke="#A7A2A9" stroke-width="6"/>
+  <rect x="110" y="135" width="980" height="405" rx="18" fill="#A7A2A9" opacity="0.18" stroke="#FFBA08" stroke-width="4" stroke-dasharray="18 12"/>
+  <circle cx="600" cy="285" r="82" fill="#E60023"/>
+  <path d="M570 285h60M600 255v60" stroke="#F4F7F5" stroke-width="18" stroke-linecap="round"/>
+  <text x="600" y="420" fill="#F4F7F5" font-family="Segoe UI, Arial, sans-serif" font-size="54" font-weight="700" text-anchor="middle">PROYECTO DEMOSTRACIÓN</text>
+  <text x="600" y="470" fill="#FFBA08" font-family="Consolas, monospace" font-size="28" text-anchor="middle">ACTIVO FICTICIO — REEMPLAZABLE</text>
+</svg>
