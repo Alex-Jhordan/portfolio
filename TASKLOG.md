@@ -123,7 +123,7 @@
   - Create `src/layouts/ArticleLayout.astro` to display the article title, publication date, and rendered Markdown with a readable content width and heading hierarchy.
   - Provide appropriate metadata for each article and handle invalid or unknown slugs with a proper not-found result.
 
-- [ ] **Task 4.6: Build the contact page and not-found page**
+- [X] **Task 4.6: Build the contact page and not-found page**
   - Create `src/pages/contact.astro` with `ContactForm` and clearly marked sample professional profile links containing `TO_REPLACE` in their URLs.
   - Add a visible placeholder notice or HTML `TODO` comment next to each fake profile link so maintainers can find and replace every example value.
   - Create `src/pages/404.astro` with a Spanish not-found message and working links back to the home page and primary sections.
