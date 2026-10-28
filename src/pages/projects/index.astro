@@ -1,0 +1,128 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+
+const projects = (await getCollection("projects"))
+	.sort((left, right) => {
+		const orderDifference = left.data.order - right.data.order;
+		return orderDifference !== 0
+			? orderDifference
+			: left.data.title.localeCompare(right.data.title, "es");
+	});
+
+const technologies = [...new Set(projects.flatMap((entry) => entry.data.technologies))]
+	.sort((left, right) => left.localeCompare(right, "es"));
+---
+
+<BaseLayout
+	title="Proyectos | Portfolio name TO_REPLACE"
+	description="Directorio de proyectos demostrativos de Portfolio name TO_REPLACE con filtro accesible por tecnología."
+>
+	<section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20" aria-labelledby="titulo-proyectos">
+		<header class="max-w-3xl">
+			<p class="font-mono text-sm uppercase tracking-wide text-accent-red">Selección de demostración</p>
+			<h1 id="titulo-proyectos" class="mt-3 text-4xl font-bold tracking-tight text-rich-black sm:text-5xl">
+				Proyectos
+			</h1>
+			<p class="mt-5 text-lg leading-8 text-rich-black/80">
+				Explora las entradas ficticias de proyectos. El contenido mostrado debe reemplazarse por trabajo real antes de publicar.
+			</p>
+		</header>
+
+		<div class="mt-10">
+			<div role="group" aria-label="Filtrar proyectos por tecnología" class="flex flex-wrap gap-2">
+				<button
+					type="button"
+					aria-pressed="true"
+					data-project-filter="all"
+					class="min-h-11 rounded-sm border border-accent-red bg-accent-red px-4 py-2 text-sm font-semibold text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-red"
+				>
+					Todas
+				</button>
+				{technologies.map((technology) => (
+					<button
+						type="button"
+						aria-pressed="false"
+						data-project-filter={technology}
+						class="min-h-11 rounded-sm border border-rose-quartz/70 bg-white px-4 py-2 text-sm font-semibold text-rich-black hover:border-accent-red hover:text-accent-red focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-red"
+					>
+						{technology}
+					</button>
+				))}
+			</div>
+			<p id="estado-filtro" class="mt-4 text-sm text-rich-black/70" aria-live="polite">
+				Se muestran {projects.length} {projects.length === 1 ? "proyecto" : "proyectos"}.
+			</p>
+		</div>
+
+		{projects.length > 0 ? (
+			<div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3" data-project-grid>
+				{projects.map((entry) => (
+					<div
+						data-project-card
+						data-technologies={JSON.stringify(entry.data.technologies)}
+					>
+						<ProjectCard
+							title={entry.data.title}
+							summary={entry.data.summary}
+							slug={entry.data.slug}
+							technologies={entry.data.technologies}
+							cover={entry.data.cover}
+							coverAlt={entry.data.coverAlt}
+						/>
+					</div>
+				))}
+			</div>
+		) : (
+			<div class="mt-8 rounded-sm border border-dashed border-rose-quartz bg-white p-6">
+				<p class="font-semibold text-rich-black">Aún no hay proyectos públicos.</p>
+				<p class="mt-2 text-rich-black/75">Añade una entrada a la colección de proyectos para mostrarla en este directorio.</p>
+			</div>
+		)}
+	</section>
+</BaseLayout>
+
+<script>
+	const filterButtons = Array.from(
+		document.querySelectorAll<HTMLButtonElement>("[data-project-filter]"),
+	);
+	const projectCards = Array.from(
+		document.querySelectorAll<HTMLElement>("[data-project-card]"),
+	);
+	const status = document.querySelector<HTMLElement>("#estado-filtro");
+
+	const setSelectedFilter = (selectedTechnology: string) => {
+		filterButtons.forEach((button) => {
+			const selected = button.dataset.projectFilter === selectedTechnology;
+			button.setAttribute("aria-pressed", String(selected));
+
+			button.classList.toggle("border-accent-red", selected);
+			button.classList.toggle("bg-accent-red", selected);
+			button.classList.toggle("text-white", selected);
+			button.classList.toggle("border-rose-quartz/70", !selected);
+			button.classList.toggle("bg-white", !selected);
+			button.classList.toggle("text-rich-black", !selected);
+		});
+
+		let visibleCount = 0;
+		projectCards.forEach((card) => {
+			const technologies = JSON.parse(card.dataset.technologies || "[]") as string[];
+			const visible = selectedTechnology === "all"
+				|| technologies.includes(selectedTechnology);
+			card.hidden = !visible;
+			if (visible) visibleCount += 1;
+		});
+
+		if (status) {
+			const label = visibleCount === 1 ? "proyecto" : "proyectos";
+			status.textContent = `Se muestran ${visibleCount} ${label}${selectedTechnology === "all" ? "" : ` con ${selectedTechnology}`}.`;
+		}
+	};
+
+	filterButtons.forEach((button) => {
+		button.addEventListener("click", () => {
+			setSelectedFilter(button.dataset.projectFilter || "all");
+		});
+	});
+</script>

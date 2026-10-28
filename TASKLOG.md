@@ -105,7 +105,7 @@
   - Add the download link only when a real CV asset is supplied, and ensure it points to the final public path.
   - Keep the about-page layout responsive and provide page-specific title and description metadata through `BaseLayout`.
 
-- [ ] **Task 4.3: Build the projects directory and accessible technology filter**
+- [X] **Task 4.3: Build the projects directory and accessible technology filter**
   - Create `src/pages/projects/index.astro` and list all published project entries using `ProjectCard`.
   - Derive the technology filter options from the project collection and provide an option to show all projects.
   - Implement filtering with a small browser-side script that preserves keyboard access, communicates the selected filter state, and leaves project links usable.
