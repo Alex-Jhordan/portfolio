@@ -1,17 +1,16 @@
 ---
-import "../styles/global.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+	title="Inicio | Portfolio name TO_REPLACE"
+	description="Portafolio profesional de demostración con proyectos, experiencia y artículos técnicos."
+>
+	<section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+		<p class="font-mono text-sm uppercase tracking-wide text-accent-red">Demostración</p>
+		<h1 class="mt-3 text-4xl font-bold tracking-tight text-rich-black sm:text-5xl">Portfolio name TO_REPLACE</h1>
+		<p class="mt-5 max-w-2xl text-lg text-rich-black/80">
+			Página de inicio de ejemplo. Sustituye este contenido por la presentación profesional real antes de publicar.
+		</p>
+	</section>
+</BaseLayout>

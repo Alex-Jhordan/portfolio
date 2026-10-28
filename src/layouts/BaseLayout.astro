@@ -1,0 +1,75 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+	title?: string;
+	description?: string;
+	socialImage?: string;
+	canonicalUrl?: string;
+}
+
+const {
+	title,
+	description,
+	socialImage,
+	canonicalUrl,
+} = Astro.props;
+
+const defaultTitle = "Portfolio name TO_REPLACE";
+const defaultDescription = "Portafolio profesional y blog técnico de demostración. Contenido de ejemplo TO_REPLACE.";
+const fallbackSiteUrl = "https://portfolio-TO_REPLACE.vercel.app";
+const siteUrl = Astro.site ?? new URL(fallbackSiteUrl);
+const pageTitle = title?.trim() || defaultTitle;
+const pageDescription = description?.trim() || defaultDescription;
+const canonical = canonicalUrl
+	? new URL(canonicalUrl, siteUrl).toString()
+	: new URL(Astro.url.pathname, siteUrl).toString();
+const socialImageUrl = socialImage?.trim()
+	? new URL(socialImage, siteUrl).toString()
+	: undefined;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={pageDescription} />
+		<meta name="theme-color" content="#F4F7F5" />
+
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<link rel="canonical" href={canonical} />
+
+		<title>{pageTitle}</title>
+
+		<meta property="og:locale" content="es_ES" />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content={defaultTitle} />
+		<meta property="og:title" content={pageTitle} />
+		<meta property="og:description" content={pageDescription} />
+		<meta property="og:url" content={canonical} />
+		{socialImageUrl && <meta property="og:image" content={socialImageUrl} />}
+
+		<meta name="twitter:card" content={socialImageUrl ? "summary_large_image" : "summary"} />
+		<meta name="twitter:title" content={pageTitle} />
+		<meta name="twitter:description" content={pageDescription} />
+		{socialImageUrl && <meta name="twitter:image" content={socialImageUrl} />}
+	</head>
+	<body class="min-h-screen bg-seasalt font-sans text-rich-black">
+		<a
+			href="#contenido-principal"
+			class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-sm focus:bg-seasalt focus:px-4 focus:py-2 focus:text-rich-black"
+		>
+			Saltar al contenido principal
+		</a>
+		<Header />
+		<main id="contenido-principal" class="min-h-[60vh]">
+			<slot />
+		</main>
+		<Footer />
+	</body>
+</html>

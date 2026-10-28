@@ -60,7 +60,7 @@
 
 ## Phase 3: Shared application shell and components
 
-- [ ] **Task 3.1: Build the shared page layout and metadata**
+- [X] **Task 3.1: Build the shared page layout and metadata**
   - Create `src/layouts/BaseLayout.astro` with the document type, Spanish `lang` attribute, character encoding, viewport metadata, favicon, page title, description, canonical URL, and social-sharing metadata.
   - Import `src/styles/global.css` from the shared layout and include the shared `Header` and `Footer` around the page slot.
   - Use typed Astro props for the title, description, optional social image, and canonical URL.
