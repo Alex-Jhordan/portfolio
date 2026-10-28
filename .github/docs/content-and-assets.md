@@ -51,6 +51,8 @@ Article entries should support:
 - Markdown article content.
 - Optional publication state metadata if drafts need to be kept alongside published articles.
 
+Articles use the `draft` boolean to keep work in progress separated from published material. Set it to `false` for a published article or omit it to use the default. Public article listings and detail routes generated from this collection must filter out entries where `draft` is `true`.
+
 ## Content conventions
 
 - Use lowercase kebab-case for slugs and asset filenames; avoid spaces and special characters.

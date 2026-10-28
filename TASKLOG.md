@@ -50,7 +50,7 @@
   - Define and apply a consistent ordering convention so the home-page experience timeline displays entries in the intended order.
   - Make it explicit in the entry content that the experience is demo data and must be replaced; do not invent or imply actual employment history.
 
-- [ ] **Task 2.4: Add Spanish-language blog articles**
+- [X] **Task 2.4: Add Spanish-language blog articles**
   - Create Markdown article entries under `src/content/articles/` using stable kebab-case filenames and slugs.
   - Create at least one clearly identified demonstration article with a fictional title, lorem ipsum-style Spanish summary and Markdown body, and a valid sample publication date.
   - Populate the demonstration entry with every required schema field and representative optional metadata.
