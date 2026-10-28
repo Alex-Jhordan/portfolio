@@ -61,6 +61,10 @@ Article entries should support:
 
 Store project images and videos locally in a clearly organized structure associated with their project entries. Use descriptive filenames and avoid duplicating the same asset unnecessarily.
 
+- Store general public assets and downloadable files under `public/assets/`.
+- Store project-specific media under `src/assets/projects/<project-slug>/` and keep filenames lowercase and kebab-case.
+- Store the downloadable CV at the public path `/cv/cv.pdf`; create or replace the local file at `public/cv/cv.pdf`.
+- Store site-wide social-sharing images, when needed, under `public/assets/social/` with descriptive lowercase kebab-case filenames.
 - Use appropriately sized, optimized image files for their display context.
 - Provide meaningful alternative text for informative images; use empty alternative text for purely decorative images.
 - Use video only when it adds useful project context. Provide a poster image where appropriate and avoid loading large video files before playback is needed.

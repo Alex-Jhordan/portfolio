@@ -18,7 +18,7 @@
   - Define the sans-serif font stack `"Segoe UI", "Helvetica Neue", Arial, sans-serif` and monospace font stack `"SFMono-Regular", "Consolas", "Liberation Mono", monospace`.
   - Confirm the palette and font stacks are available to Astro components through Tailwind utilities and apply a clear base style for page background, text, links, and focus states.
 
-- [ ] **Task 1.3: Establish project-wide metadata and static asset conventions**
+- [X] **Task 1.3: Establish project-wide metadata and static asset conventions**
   - Set a searchable placeholder URL ending in `TO_REPLACE` as Astro's `site` value in `astro.config.mjs`, for example `https://portfolio-TO_REPLACE.vercel.app`, so canonical URL generation works during development.
   - Add the site favicon under `public/` and reference it from the shared layout.
   - Establish predictable locations and naming for public assets, project media, and the downloadable CV as described in `.github/docs/content-and-assets.md`.
