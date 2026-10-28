@@ -11,7 +11,7 @@
   - Keep `tsconfig.json` in strict mode and resolve project diagnostics rather than weakening compiler settings; verify that it extends `astro/tsconfigs/strict`.
   - Create the initial application directories `src/components/`, `src/layouts/`, `src/pages/`, `src/styles/`, and `src/content/`.
 
-- [ ] **Task 1.2: Configure Tailwind CSS and the site design tokens**
+- [X] **Task 1.2: Configure Tailwind CSS and the site design tokens**
   - Install Tailwind CSS and its Vite integration using pnpm, following the integration compatible with the selected Astro and Tailwind versions.
   - Register the Tailwind Vite plugin in `astro.config.mjs`.
   - Create `src/styles/global.css`, import Tailwind, and define the design tokens for seasalt `#F4F7F5`, rich black `#0E131F`, rose quartz `#A7A2A9`, accent red `#E60023`, and selective yellow `#FFBA08`.
