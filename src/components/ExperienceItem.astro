@@ -1,0 +1,38 @@
+---
+interface Props {
+	role: string;
+	organization: string;
+	startDate: string;
+	endDate?: string;
+	current?: boolean;
+	description?: string;
+}
+
+const { role, organization, startDate, endDate, current = false, description } = Astro.props;
+
+const formatDate = (value: string) => {
+	const date = new Date(`${value}T00:00:00`);
+	return Number.isNaN(date.getTime())
+		? value
+		: new Intl.DateTimeFormat("es", { month: "long", year: "numeric" }).format(date);
+};
+
+---
+
+<article class="relative border-l border-rose-quartz/70 pl-6 pb-8 last:pb-0">
+	<span aria-hidden="true" class="absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full bg-accent-red ring-4 ring-seasalt"></span>
+	<h3 class="text-xl font-bold text-rich-black">{role}</h3>
+	<p class="mt-1 font-semibold text-rich-black/75">{organization}</p>
+	<p class="mt-2 font-mono text-xs uppercase tracking-wide text-rich-black/60">
+		<time datetime={startDate}>{formatDate(startDate)}</time>
+		<span aria-hidden="true"> — </span>
+		{current ? (
+			<span>Actualidad</span>
+		) : endDate ? (
+			<time datetime={endDate}>{formatDate(endDate)}</time>
+		) : (
+			<span>Sin fecha de finalización</span>
+		)}
+	</p>
+	{description && <p class="mt-4 max-w-2xl leading-7 text-rich-black/75">{description}</p>}
+</article>

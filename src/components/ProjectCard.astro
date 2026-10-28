@@ -1,0 +1,47 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import TechBadge from "./TechBadge.astro";
+
+interface Props {
+	title: string;
+	summary: string;
+	slug: string;
+	technologies?: string[];
+	cover?: ImageMetadata;
+	coverAlt?: string;
+}
+
+const { title, summary, slug, technologies = [], cover, coverAlt } = Astro.props;
+---
+
+<article class="overflow-hidden rounded-sm border border-rose-quartz/50 bg-white shadow-sm">
+	{cover && (
+		<Image
+			src={cover}
+			alt={coverAlt || ""}
+			widths={[480, 720, 960]}
+			sizes="(min-width: 768px) 33vw, 100vw"
+			class="aspect-video w-full object-cover"
+		/>
+	)}
+	<div class="flex h-full flex-col gap-4 p-5">
+		<h3 class="text-xl font-bold text-rich-black">{title}</h3>
+		<p class="leading-7 text-rich-black/75">{summary}</p>
+		{technologies.length > 0 && (
+			<ul aria-label="Tecnologías utilizadas" class="flex flex-wrap gap-2">
+				{technologies.map((technology) => (
+					<li><TechBadge label={technology} /></li>
+				))}
+			</ul>
+		)}
+		<a
+			href={`/projects/${slug}/`}
+			aria-label={`Ver proyecto: ${title}`}
+			class="mt-auto inline-flex min-h-11 items-center text-sm font-semibold text-accent-red underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-red"
+		>
+			Ver proyecto
+			<span aria-hidden="true" class="ml-2">→</span>
+		</a>
+	</div>
+</article>

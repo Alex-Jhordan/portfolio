@@ -1,0 +1,32 @@
+---
+interface Props {
+	title: string;
+	description: string;
+	slug: string;
+	pubDate?: string;
+}
+
+const { title, description, slug, pubDate } = Astro.props;
+const date = pubDate ? new Date(`${pubDate}T00:00:00`) : undefined;
+const formattedDate = date && !Number.isNaN(date.getTime())
+	? new Intl.DateTimeFormat("es", { day: "numeric", month: "long", year: "numeric" }).format(date)
+	: undefined;
+---
+
+<article class="border-l-4 border-selective-yellow bg-white p-5 shadow-sm">
+	{formattedDate && pubDate && (
+		<time datetime={pubDate} class="font-mono text-xs uppercase tracking-wide text-rich-black/60">
+			{formattedDate}
+		</time>
+	)}
+	<h3 class="mt-2 text-xl font-bold text-rich-black">{title}</h3>
+	<p class="mt-3 leading-7 text-rich-black/75">{description}</p>
+	<a
+		href={`/blog/${slug}/`}
+		aria-label={`Leer artículo: ${title}`}
+		class="mt-4 inline-flex min-h-11 items-center text-sm font-semibold text-accent-red underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-red"
+	>
+		Leer artículo
+		<span aria-hidden="true" class="ml-2">→</span>
+	</a>
+</article>

@@ -72,7 +72,7 @@
   - Create `src/components/Footer.astro` with placeholder copyright information and sample profile links whose URLs contain `TO_REPLACE`; ensure the placeholder status is obvious in both labels and destinations.
   - Use semantic navigation landmarks, descriptive link text, visible focus indicators, and responsive Tailwind classes.
 
-- [ ] **Task 3.3: Build reusable portfolio and content components**
+- [X] **Task 3.3: Build reusable portfolio and content components**
   - Create `src/components/Hero.astro` for the home-page introduction, concise profile, and primary calls to action.
   - Create `src/components/TechBadge.astro` for technology labels used by project cards and detail pages.
   - Create `src/components/ProjectCard.astro` with project image, title, summary, technologies, and a link to `/projects/[slug]/`.

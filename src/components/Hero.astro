@@ -1,0 +1,47 @@
+---
+interface Props {
+	title?: string;
+	eyebrow?: string;
+	introduction?: string;
+	primaryLabel?: string;
+	primaryHref?: string;
+	secondaryLabel?: string;
+	secondaryHref?: string;
+}
+
+const {
+	title = "Portfolio name TO_REPLACE",
+	eyebrow = "Portafolio profesional de demostración",
+	introduction = "Presentación breve de ejemplo. Sustituye este texto por tu perfil profesional antes de publicar.",
+	primaryLabel = "Ver proyectos",
+	primaryHref = "/projects/",
+	secondaryLabel = "Contactar",
+	secondaryHref = "/contact/",
+} = Astro.props;
+---
+
+<section class="bg-rich-black text-seasalt" aria-labelledby="hero-title">
+	<div class="mx-auto grid max-w-6xl gap-8 px-4 py-16 sm:px-6 md:grid-cols-[minmax(0,2fr)_minmax(12rem,1fr)] md:items-end md:py-20">
+		<div>
+			<p class="font-mono text-sm uppercase tracking-wide text-selective-yellow">{eyebrow}</p>
+			<h1 id="hero-title" class="mt-4 max-w-3xl text-4xl font-bold tracking-tight sm:text-5xl">{title}</h1>
+			<p class="mt-6 max-w-2xl text-lg leading-8 text-seasalt/85">{introduction}</p>
+		</div>
+		<div class="flex flex-col gap-3 sm:flex-row md:flex-col">
+			<a
+				href={primaryHref}
+				class="inline-flex min-h-12 items-center justify-center rounded-sm bg-accent-red px-5 py-3 text-center font-semibold text-white hover:bg-red-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-selective-yellow"
+			>
+				{primaryLabel}
+			</a>
+			{secondaryLabel && secondaryHref && (
+				<a
+					href={secondaryHref}
+					class="inline-flex min-h-12 items-center justify-center rounded-sm border border-seasalt px-5 py-3 text-center font-semibold text-seasalt hover:border-selective-yellow hover:text-selective-yellow focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-selective-yellow"
+				>
+					{secondaryLabel}
+				</a>
+			)}
+		</div>
+	</div>
+</section>
