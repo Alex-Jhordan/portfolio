@@ -80,7 +80,7 @@
   - Create `src/components/ExperienceItem.astro` for role, organization, dates, and description in the timeline.
   - Declare typed `Props` interfaces in each Astro component and handle optional content without broken markup.
 
-- [ ] **Task 3.4: Implement the Formspree contact form component**
+- [X] **Task 3.4: Implement the Formspree contact form component**
   - Create `src/components/ContactForm.astro` with persistent Spanish labels for name, email, and message fields, required-field validation, and an accessible status region.
   - Configure the form to read its endpoint from a clearly named public setting such as `PUBLIC_FORMSPREE_ENDPOINT`, with a fake Formspree form ID ending in `TO_REPLACE` in `.env.example` and Vercel's environment settings.
   - Ensure the form displays a clear configuration placeholder or non-submitting state when the endpoint still contains `TO_REPLACE`; never submit demo form data to a placeholder URL.
