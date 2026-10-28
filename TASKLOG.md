@@ -117,7 +117,7 @@
   - Use Astro image handling for local images where appropriate, preserve intrinsic dimensions, and avoid eager loading large media that is not initially visible.
   - Return a proper not-found result for unknown slugs and ensure optional project media or links do not break the page.
 
-- [ ] **Task 4.5: Build the blog directory and article detail routes**
+- [X] **Task 4.5: Build the blog directory and article detail routes**
   - Create `src/pages/blog/index.astro` to list published article entries with `ArticleCard`, ordered newest first.
   - Create `src/pages/blog/[slug].astro` and generate static paths from published article slugs only.
   - Create `src/layouts/ArticleLayout.astro` to display the article title, publication date, and rendered Markdown with a readable content width and heading hierarchy.

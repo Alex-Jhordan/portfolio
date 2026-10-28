@@ -1,0 +1,44 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ArticleCard from "../../components/ArticleCard.astro";
+
+const articles = (await getCollection("articles"))
+	.filter((entry) => !entry.data.draft)
+	.sort((left, right) => right.data.pubDate.localeCompare(left.data.pubDate));
+---
+
+<BaseLayout
+	title="Blog | Portfolio name TO_REPLACE"
+	description="Artículos técnicos ficticios y demostrativos publicados por Portfolio name TO_REPLACE."
+>
+	<section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20" aria-labelledby="titulo-blog">
+		<header class="max-w-3xl">
+			<p class="font-mono text-sm uppercase tracking-wide text-accent-red">Notas de demostración</p>
+			<h1 id="titulo-blog" class="mt-3 text-4xl font-bold tracking-tight text-rich-black sm:text-5xl">
+				Blog técnico
+			</h1>
+			<p class="mt-5 text-lg leading-8 text-rich-black/80">
+				Artículos ficticios ordenados del más reciente al más antiguo. Sustituye las publicaciones de ejemplo por contenido real antes de publicar.
+			</p>
+		</header>
+
+		{articles.length > 0 ? (
+			<div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+				{articles.map((entry) => (
+					<ArticleCard
+						title={entry.data.title}
+						description={entry.data.description}
+						slug={entry.data.slug}
+						pubDate={entry.data.pubDate}
+					/>
+				))}
+			</div>
+		) : (
+			<div class="mt-10 rounded-sm border border-dashed border-rose-quartz bg-white p-6">
+				<p class="font-semibold text-rich-black">Aún no hay artículos publicados.</p>
+				<p class="mt-2 text-rich-black/75">Añade una entrada pública a la colección de artículos para mostrarla aquí.</p>
+			</div>
+		)}
+	</section>
+</BaseLayout>
