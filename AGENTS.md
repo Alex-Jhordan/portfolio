@@ -24,6 +24,19 @@ If requirements appear to conflict, do not silently choose an interpretation. Ex
 - Do not mark a task complete when any of its required steps remain unfinished or unverified.
 - If implementation reveals a required step or detail missing from `TASKLOG.md`, revise the relevant task or add the necessary task and steps as part of the original plan. Write it as an intended requirement, not as a note about a later change, so the backlog remains sufficient to recreate the project from scratch.
 
+## Documentation
+
+Full Astro documentation: https://docs.astro.build
+
+Consult the relevant guides before working on related tasks:
+
+- [Adding pages, dynamic routes, or middleware](https://docs.astro.build/en/guides/routing/)
+- [Working with Astro components](https://docs.astro.build/en/basics/astro-components/)
+- [Using React, Vue, Svelte, or other framework components](https://docs.astro.build/en/guides/framework-components/) only if browser-side framework integration is explicitly required
+- [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
+- [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/) when making styling changes
+- [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/) only if multilingual routing is added
+
 ## Engineering conventions
 
 - Use Astro components and pages, TypeScript in strict mode, Tailwind CSS for styling, and pnpm for package management.

@@ -2,13 +2,13 @@
 
 ## Phase 1: Project foundation
 
-- [ ] **Task 1.1: Initialize the Astro application with pnpm and strict TypeScript**
-  - Create the Astro project in the `portfolio-new/` repository root using the current stable Astro release and its strict TypeScript setup.
-  - Use pnpm as the package manager and commit `package.json` and `pnpm-lock.yaml` so installs are reproducible.
-  - Set the Node.js engine requirement in `package.json` to a version supported by the selected Astro release and available in Vercel.
-  - Add `@astrojs/check` and `typescript` as development dependencies so `astro check` can validate the application.
-  - Add the standard Astro scripts for local development, production build, preview, and type checking; define the type-check script as `astro check`.
-  - Keep `tsconfig.json` in strict mode and resolve project diagnostics rather than weakening compiler settings.
+- [X] **Task 1.1: Initialize the Astro application with pnpm and strict TypeScript**
+  - Create the Astro project in the repository root using the current stable Astro release and its strict TypeScript setup. To initialize it directly in the current root directory, run `pnpm create astro@latest . --template minimal`.
+  - Use pnpm as the package manager and verify that `package.json` and `pnpm-lock.yaml` exist so installs are reproducible. If dependencies are not installed yet, run `pnpm install` to generate or update the lockfile.
+  - Set the Node.js engine requirement in `package.json` to a version supported by the selected Astro release and available in Vercel; confirm this manually.
+  - Add `@astrojs/check` and `typescript` as development dependencies so `astro check` can validate the application. Run `pnpm add --save-dev @astrojs/check typescript`.
+  - Add the standard Astro scripts for local development, production build, preview, and type checking. Define the type-check script as `check` with the command `astro check`; for example, run `pnpm pkg set scripts.check="astro check"`.
+  - Keep `tsconfig.json` in strict mode and resolve project diagnostics rather than weakening compiler settings; verify that it extends `astro/tsconfigs/strict`.
   - Create the initial application directories `src/components/`, `src/layouts/`, `src/pages/`, `src/styles/`, and `src/content/`.
 
 - [ ] **Task 1.2: Configure Tailwind CSS and the site design tokens**
