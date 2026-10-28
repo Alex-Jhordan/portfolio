@@ -90,7 +90,7 @@
 
 ## Phase 4: Site routes and content rendering
 
-- [ ] **Task 4.1: Build the home page**
+- [X] **Task 4.1: Build the home page**
   - Create `src/pages/index.astro` and compose `BaseLayout`, `Hero`, `ProjectCard`, `ExperienceItem`, and `ArticleCard`.
   - Query the `projects`, `experience`, and `articles` collections at build time.
   - Display featured projects in configured order, experience entries in the agreed timeline order, and the latest published articles by publication date.

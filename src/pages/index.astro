@@ -1,16 +1,148 @@
 ---
+import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import ExperienceItem from "../components/ExperienceItem.astro";
+import ArticleCard from "../components/ArticleCard.astro";
+
+const projects = (await getCollection("projects"))
+	.filter((entry) => entry.data.featured)
+	.sort((left, right) => left.data.order - right.data.order);
+
+const experience = (await getCollection("experience"))
+	.sort((left, right) => left.data.order - right.data.order);
+
+const articles = (await getCollection("articles"))
+	.filter((entry) => !entry.data.draft)
+	.sort((left, right) => right.data.pubDate.localeCompare(left.data.pubDate))
+	.slice(0, 3);
 ---
 
 <BaseLayout
 	title="Inicio | Portfolio name TO_REPLACE"
-	description="Portafolio profesional de demostración con proyectos, experiencia y artículos técnicos."
+	description="Portafolio profesional de demostración con proyectos ficticios, experiencia de ejemplo y artículos técnicos reemplazables."
 >
-	<section class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-		<p class="font-mono text-sm uppercase tracking-wide text-accent-red">Demostración</p>
-		<h1 class="mt-3 text-4xl font-bold tracking-tight text-rich-black sm:text-5xl">Portfolio name TO_REPLACE</h1>
-		<p class="mt-5 max-w-2xl text-lg text-rich-black/80">
-			Página de inicio de ejemplo. Sustituye este contenido por la presentación profesional real antes de publicar.
-		</p>
+	<Hero
+		title="Portfolio name TO_REPLACE"
+		eyebrow="Contenido ficticio de demostración"
+		introduction="Perfil profesional de ejemplo. Sustituye esta presentación por tu especialidad, experiencia y propuesta de valor antes de publicar."
+		primaryLabel="Ver proyectos"
+		primaryHref="/projects/"
+		secondaryLabel="Contactar"
+		secondaryHref="/contact/"
+	/> 
+
+	<section aria-labelledby="proyectos-destacados" class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+		<div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+			<div>
+				<p class="font-mono text-sm uppercase tracking-wide text-accent-red">Selección ficticia</p>
+				<h2 id="proyectos-destacados" class="mt-2 text-3xl font-bold tracking-tight text-rich-black">Proyectos destacados</h2>
+				<p class="mt-3 max-w-2xl leading-7 text-rich-black/75">
+					Ejemplos de proyectos reemplazables que muestran el tipo de trabajo que puede presentar el portfolio.
+				</p>
+			</div>
+			<a
+				href="/projects/"
+				class="inline-flex min-h-11 items-center font-semibold text-accent-red underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-red"
+			>
+				Ver todos los proyectos <span aria-hidden="true" class="ml-2">→</span>
+			</a>
+		</div>
+
+		{projects.length > 0 ? (
+			<div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+				{projects.map((entry) => (
+					<ProjectCard
+						title={entry.data.title}
+						summary={entry.data.summary}
+						slug={entry.data.slug}
+						technologies={entry.data.technologies}
+						cover={entry.data.cover}
+						coverAlt={entry.data.coverAlt}
+					/>
+				))}
+			</div>
+		) : (
+			<div class="mt-8 rounded-sm border border-dashed border-rose-quartz bg-white p-6">
+				<p class="font-semibold text-rich-black">Aún no hay proyectos públicos destacados.</p>
+				<p class="mt-2 text-rich-black/75">Añade una entrada ficticia o real marcada como destacada para mostrarla aquí.</p>
+			</div>
+		)}
+	</section>
+
+	<section aria-labelledby="experiencia-profesional" class="border-y border-rose-quartz/40 bg-white">
+		<div class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+			<div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+				<div>
+					<p class="font-mono text-sm uppercase tracking-wide text-accent-red">Trayectoria de ejemplo</p>
+					<h2 id="experiencia-profesional" class="mt-2 text-3xl font-bold tracking-tight text-rich-black">Experiencia profesional</h2>
+					<p class="mt-3 max-w-2xl leading-7 text-rich-black/75">
+						Esta sección presenta una línea temporal ficticia que debe reemplazarse por información verificable del propietario.
+					</p>
+				</div>
+				<a
+					href="/about/"
+					class="inline-flex min-h-11 items-center font-semibold text-accent-red underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-red"
+				>
+					Conocer más <span aria-hidden="true" class="ml-2">→</span>
+				</a>
+			</div>
+
+			{experience.length > 0 ? (
+				<div class="mt-8 max-w-3xl">
+					{experience.map((entry) => (
+						<ExperienceItem
+							role={entry.data.role}
+							organization={entry.data.organization}
+							startDate={entry.data.startDate}
+							endDate={entry.data.endDate}
+							current={entry.data.current}
+						/>
+					))}
+				</div>
+			) : (
+				<div class="mt-8 rounded-sm border border-dashed border-rose-quartz bg-seasalt p-6">
+					<p class="font-semibold text-rich-black">Aún no hay experiencia pública disponible.</p>
+					<p class="mt-2 text-rich-black/75">Añade entradas verificables a la colección de experiencia antes de publicar.</p>
+				</div>
+			)}
+		</div>
+	</section>
+
+	<section aria-labelledby="articulos-recientes" class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+		<div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+			<div>
+				<p class="font-mono text-sm uppercase tracking-wide text-accent-red">Notas técnicas ficticias</p>
+				<h2 id="articulos-recientes" class="mt-2 text-3xl font-bold tracking-tight text-rich-black">Artículos recientes</h2>
+				<p class="mt-3 max-w-2xl leading-7 text-rich-black/75">
+					Las últimas publicaciones de demostración se ordenan por fecha, de la más reciente a la más antigua.
+				</p>
+			</div>
+			<a
+				href="/blog/"
+				class="inline-flex min-h-11 items-center font-semibold text-accent-red underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-red"
+			>
+				Ver todos los artículos <span aria-hidden="true" class="ml-2">→</span>
+			</a>
+		</div>
+
+		{articles.length > 0 ? (
+			<div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+				{articles.map((entry) => (
+					<ArticleCard
+						title={entry.data.title}
+						description={entry.data.description}
+						slug={entry.data.slug}
+						pubDate={entry.data.pubDate}
+					/>
+				))}
+			</div>
+		) : (
+			<div class="mt-8 rounded-sm border border-dashed border-rose-quartz bg-white p-6">
+				<p class="font-semibold text-rich-black">Aún no hay artículos publicados.</p>
+				<p class="mt-2 text-rich-black/75">Añade una entrada con fecha de publicación y sin marcarla como borrador.</p>
+			</div>
+		)}
 	</section>
 </BaseLayout>
