@@ -27,7 +27,7 @@
 
 ## Phase 2: Content collections and source material
 
-- [ ] **Task 2.1: Define validated Astro content collections**
+- [X] **Task 2.1: Define validated Astro content collections**
   - Create `src/content.config.ts` using the content collection API supported by the selected Astro version.
   - Define separate `projects`, `experience`, and `articles` collections with typed schemas for the fields specified in `.github/docs/content-and-assets.md`.
   - Validate required titles, summaries, dates, technology lists, featured ordering, optional external links, and references to local project media.
