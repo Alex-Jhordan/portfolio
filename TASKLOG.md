@@ -66,7 +66,7 @@
   - Use typed Astro props for the title, description, optional social image, and canonical URL.
   - Ensure each route can supply page-specific metadata and that the default metadata is valid when optional values are omitted.
 
-- [ ] **Task 3.2: Implement responsive site navigation and footer**
+- [X] **Task 3.2: Implement responsive site navigation and footer**
   - Create `src/components/Header.astro` with a clearly identified placeholder site identity such as `Portfolio name TO_REPLACE` and Spanish navigation links to `/`, `/about/`, `/projects/`, `/blog/`, and `/contact/`.
   - Make navigation adapt to narrow viewports with a keyboard-operable mobile menu and an accessible expanded/collapsed state.
   - Create `src/components/Footer.astro` with placeholder copyright information and sample profile links whose URLs contain `TO_REPLACE`; ensure the placeholder status is obvious in both labels and destinations.
