@@ -111,7 +111,7 @@
   - Implement filtering with a small browser-side script that preserves keyboard access, communicates the selected filter state, and leaves project links usable.
   - Ensure the full project list remains available when scripting is unavailable or no filter is selected.
 
-- [ ] **Task 4.4: Build project detail routes**
+- [X] **Task 4.4: Build project detail routes**
   - Create `src/pages/projects/[slug].astro` and generate static paths from the project collection using each stable slug.
   - Create `src/layouts/ProjectLayout.astro` to render project summary, detailed Markdown content, local image/video media, technology badges, and configured repository or live-demo links.
   - Use Astro image handling for local images where appropriate, preserve intrinsic dimensions, and avoid eager loading large media that is not initially visible.

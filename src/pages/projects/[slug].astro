@@ -1,0 +1,44 @@
+---
+import { getCollection, render } from "astro:content";
+import ProjectLayout from "../../layouts/ProjectLayout.astro";
+
+export async function getStaticPaths() {
+	const projects = await getCollection("projects");
+
+	return projects.map((entry) => ({
+		params: { slug: entry.data.slug },
+		props: { entry },
+	}));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const videoAssets = import.meta.glob("../../assets/projects/**/*.{mp4,webm}", {
+	eager: true,
+	query: "?url",
+	import: "default",
+}) as Record<string, string>;
+
+const configuredVideo = entry.data.video?.src;
+const videoSrc = configuredVideo
+	? Object.entries(videoAssets).find(([path]) => path.endsWith(configuredVideo.replace(/^src\//, "")))?.[1]
+	: undefined;
+---
+
+<ProjectLayout
+	title={entry.data.title}
+	summary={entry.data.summary}
+	slug={entry.data.slug}
+	technologies={entry.data.technologies}
+	cover={entry.data.cover}
+	coverAlt={entry.data.coverAlt}
+	gallery={entry.data.gallery}
+	videoSrc={videoSrc}
+	videoPoster={entry.data.video?.poster}
+	videoTitle={entry.data.video?.title}
+	repositoryUrl={entry.data.repositoryUrl}
+	liveUrl={entry.data.liveUrl}
+>
+	<Content />
+</ProjectLayout>

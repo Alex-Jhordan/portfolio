@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+	title="Página no encontrada | Portfolio name TO_REPLACE"
+	description="La página solicitada no existe en este portfolio de demostración."
+>
+	<section class="mx-auto flex max-w-3xl flex-col items-start px-4 py-20 sm:px-6 sm:py-24">
+		<p class="font-mono text-sm uppercase tracking-wide text-accent-red">Error 404</p>
+		<h1 class="mt-3 text-4xl font-bold tracking-tight text-rich-black sm:text-5xl">Página no encontrada</h1>
+		<p class="mt-5 max-w-xl text-lg leading-8 text-rich-black/75">
+			La página solicitada no existe o el enlace puede estar desactualizado.
+		</p>
+		<div class="mt-8 flex flex-col gap-3 sm:flex-row">
+			<a
+				href="/"
+				class="inline-flex min-h-12 items-center justify-center rounded-sm bg-accent-red px-5 py-3 font-semibold text-white hover:bg-red-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-red"
+			>
+				Volver al inicio
+			</a>
+			<a
+				href="/projects/"
+				class="inline-flex min-h-12 items-center justify-center rounded-sm border border-rich-black px-5 py-3 font-semibold text-rich-black hover:border-accent-red hover:text-accent-red focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-red"
+			>
+				Ver proyectos
+			</a>
+		</div>
+	</section>
+</BaseLayout>

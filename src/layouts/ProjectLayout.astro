@@ -1,0 +1,140 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import BaseLayout from "./BaseLayout.astro";
+import TechBadge from "../components/TechBadge.astro";
+
+interface Props {
+	title: string;
+	summary: string;
+	slug: string;
+	technologies: string[];
+	cover?: ImageMetadata;
+	coverAlt?: string;
+	gallery?: Array<{ image: ImageMetadata; alt: string }>;
+	videoSrc?: string;
+	videoPoster?: ImageMetadata;
+	videoTitle?: string;
+	repositoryUrl?: string;
+	liveUrl?: string;
+}
+
+const {
+	title,
+	summary,
+	slug,
+	technologies,
+	cover,
+	coverAlt,
+	gallery = [],
+	videoSrc,
+	videoPoster,
+	videoTitle,
+	repositoryUrl,
+	liveUrl,
+} = Astro.props;
+---
+
+<BaseLayout
+	title={`${title} | Portfolio name TO_REPLACE`}
+	description={summary}
+>
+	<article class="mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-20">
+		<a
+			href="/projects/"
+			class="inline-flex min-h-11 items-center text-sm font-semibold text-accent-red underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-red"
+		>
+			<span aria-hidden="true" class="mr-2">←</span> Volver a proyectos
+		</a>
+
+		<header class="mt-6">
+			<p class="font-mono text-sm uppercase tracking-wide text-accent-red">Proyecto de demostración</p>
+			<h1 class="mt-3 text-4xl font-bold tracking-tight text-rich-black sm:text-5xl">{title}</h1>
+			<p class="mt-5 max-w-3xl text-lg leading-8 text-rich-black/80">{summary}</p>
+		</header>
+
+		<ul aria-label="Tecnologías utilizadas" class="mt-6 flex flex-wrap gap-2">
+			{technologies.map((technology) => (
+				<li><TechBadge label={technology} /></li>
+			))}
+		</ul>
+
+		{(repositoryUrl || liveUrl) && (
+			<div class="mt-6 flex flex-col gap-3 sm:flex-row">
+				{liveUrl && (
+					<a
+						href={liveUrl}
+						rel="noopener noreferrer"
+						target="_blank"
+						class="inline-flex min-h-12 items-center justify-center rounded-sm bg-accent-red px-5 py-3 font-semibold text-white hover:bg-red-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-red"
+					>
+						Ver demostración <span aria-hidden="true" class="ml-2">↗</span>
+					</a>
+				)}
+				{repositoryUrl && (
+					<a
+						href={repositoryUrl}
+						rel="noopener noreferrer"
+						target="_blank"
+						class="inline-flex min-h-12 items-center justify-center rounded-sm border border-rich-black px-5 py-3 font-semibold text-rich-black hover:border-accent-red hover:text-accent-red focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-red"
+					>
+						Ver repositorio <span aria-hidden="true" class="ml-2">↗</span>
+					</a>
+				)}
+			</div>
+		)}
+
+		{cover && (
+			<figure class="mt-10 overflow-hidden rounded-sm border border-rose-quartz/40 bg-white">
+				<Image
+					src={cover}
+					alt={coverAlt || ""}
+					widths={[640, 960, 1280]}
+					sizes="(min-width: 1024px) 960px, 100vw"
+					class="aspect-video w-full object-cover"
+				/>
+			</figure>
+		)}
+
+		<div class="mt-10 rounded-sm border border-rose-quartz/40 bg-white px-6 py-8 sm:px-10">
+			<div class="prose-project max-w-3xl space-y-6 leading-8 text-rich-black/80 [&_h2]:mt-8 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-rich-black [&_h3]:mt-6 [&_h3]:text-xl [&_h3]:font-bold [&_h3]:text-rich-black [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-6 [&_pre]:overflow-x-auto [&_pre]:rounded-sm [&_pre]:bg-rich-black [&_pre]:p-4 [&_pre]:text-sm [&_pre]:text-seasalt [&_blockquote]:border-l-4 [&_blockquote]:border-selective-yellow [&_blockquote]:bg-seasalt [&_blockquote]:px-5 [&_blockquote]:py-4">
+				<slot />
+			</div>
+		</div>
+
+		{gallery.length > 0 && (
+			<section class="mt-10" aria-labelledby={`${slug}-galeria`}>
+				<h2 id={`${slug}-galeria`} class="text-2xl font-bold text-rich-black">Galería del proyecto</h2>
+				<div class="mt-5 grid gap-5 sm:grid-cols-2">
+					{gallery.map((item) => (
+						<figure class="overflow-hidden rounded-sm border border-rose-quartz/40 bg-white">
+							<Image
+								src={item.image}
+								alt={item.alt}
+								widths={[480, 720, 960]}
+								sizes="(min-width: 640px) 50vw, 100vw"
+								loading="lazy"
+								class="aspect-video w-full object-cover"
+							/>
+						</figure>
+					))}
+				</div>
+			</section>
+		)}
+
+		{videoSrc && (
+			<section class="mt-10" aria-label={videoTitle || "Vídeo del proyecto"}>
+				<h2 class="text-2xl font-bold text-rich-black">{videoTitle || "Vídeo del proyecto"}</h2>
+				<video
+					class="mt-5 aspect-video w-full rounded-sm border border-rose-quartz/40 bg-rich-black"
+					controls
+					preload="metadata"
+					poster={videoPoster?.src}
+				>
+					<source src={videoSrc} />
+					Tu navegador no soporta la reproducción de vídeo.
+				</video>
+			</section>
+		)}
+	</article>
+</BaseLayout>
