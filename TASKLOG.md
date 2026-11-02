@@ -127,7 +127,7 @@
 
 ## Phase 5: Search visibility, assets, and Vercel configuration
 
-- [ ] **Task 5.1: Add site-wide search and social metadata**
+- [X] **Task 5.1: Add site-wide search and social metadata**
   - Ensure `src/layouts/BaseLayout.astro` emits page-specific title, description, canonical URL, Open Graph metadata, and social image metadata.
   - Add `public/robots.txt` with rules that permit crawling of public pages.
   - Keep a production-domain placeholder ending in `TO_REPLACE` in Astro's `site` configuration until the real Vercel domain is available, then replace it and verify canonical URLs on the generated pages.

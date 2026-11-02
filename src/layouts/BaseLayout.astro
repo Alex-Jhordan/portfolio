@@ -20,15 +20,14 @@ const {
 const defaultTitle = "Portfolio name TO_REPLACE";
 const defaultDescription = "Portafolio profesional y blog técnico de demostración. Contenido de ejemplo TO_REPLACE.";
 const fallbackSiteUrl = "https://portfolio-TO_REPLACE.vercel.app";
+const defaultSocialImage = "/assets/social/social-preview.svg";
 const siteUrl = Astro.site ?? new URL(fallbackSiteUrl);
 const pageTitle = title?.trim() || defaultTitle;
 const pageDescription = description?.trim() || defaultDescription;
 const canonical = canonicalUrl
 	? new URL(canonicalUrl, siteUrl).toString()
 	: new URL(Astro.url.pathname, siteUrl).toString();
-const socialImageUrl = socialImage?.trim()
-	? new URL(socialImage, siteUrl).toString()
-	: undefined;
+const socialImageUrl = new URL(socialImage?.trim() || defaultSocialImage, siteUrl).toString();
 ---
 
 <!doctype html>
@@ -52,12 +51,18 @@ const socialImageUrl = socialImage?.trim()
 		<meta property="og:title" content={pageTitle} />
 		<meta property="og:description" content={pageDescription} />
 		<meta property="og:url" content={canonical} />
-		{socialImageUrl && <meta property="og:image" content={socialImageUrl} />}
+		<meta property="og:image" content={socialImageUrl} />
+		<meta property="og:image:secure_url" content={socialImageUrl} />
+		<meta property="og:image:type" content="image/svg+xml" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content={defaultTitle} />
 
 		<meta name="twitter:card" content={socialImageUrl ? "summary_large_image" : "summary"} />
 		<meta name="twitter:title" content={pageTitle} />
 		<meta name="twitter:description" content={pageDescription} />
-		{socialImageUrl && <meta name="twitter:image" content={socialImageUrl} />}
+		<meta name="twitter:image" content={socialImageUrl} />
+		<meta name="twitter:image:alt" content={defaultTitle} />
 	</head>
 	<body class="min-h-screen bg-seasalt font-sans text-rich-black">
 		<a
