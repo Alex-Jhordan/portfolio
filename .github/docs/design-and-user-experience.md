@@ -16,7 +16,7 @@ The primary navigation should provide access to:
 - Blog
 - Contact
 
-The home page should introduce the owner and provide concise paths to selected projects, professional experience, recent articles, and contact information. Project and article previews should make it clear that they lead to detail pages. The about page should present the owner's biography, skills, and CV download.
+The home page should introduce the owner and provide concise paths to selected projects, professional experience, recent articles, and contact information. Project and article previews should make it clear that they lead to detail pages. The about page should present the owner's biography and skills.
 
 ## Responsive behavior
 
@@ -83,7 +83,6 @@ Project media presentation may remain part of `ProjectLayout` initially. A separ
 - Provide consistent navigation and clear links between directory and detail pages.
 - Make the selected state of project technology filters visually apparent. Filtering should not make projects inaccessible to keyboard or assistive technology users.
 - Give contact form fields persistent labels, indicate validation problems clearly, and provide understandable submission success or failure feedback.
-- Identify the CV link as a download so visitors understand its action.
 - Ensure any mobile navigation control communicates its expanded or collapsed state to assistive technology.
 
 ## Accessibility
@@ -103,4 +102,4 @@ Project images and video should support the explanation of the work rather than 
 
 ## Validation
 
-Review the main routes manually at mobile, tablet, and desktop sizes before release. Check that navigation, project filters, links, media, CV download, and contact form feedback are understandable and usable with both pointer and keyboard input.
+Review the main routes manually at mobile, tablet, and desktop sizes before release. Check that navigation, project filters, links, media, and contact form feedback are understandable and usable with both pointer and keyboard input.

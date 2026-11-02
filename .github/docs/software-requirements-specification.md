@@ -8,7 +8,7 @@ This document defines the functional and non-functional requirements for the per
 
 ### Product scope
 
-The website presents the owner's professional profile, projects, experience, technical articles, and contact options. It also provides a downloadable CV. Public-facing content will be written in Spanish.
+The website presents the owner's professional profile, projects, experience, technical articles, and contact options. Public-facing content will be written in Spanish.
 
 ### User groups
 
@@ -32,40 +32,34 @@ The website presents the owner's professional profile, projects, experience, tec
 
 ### About page
 
-- **FR-07:** The about page shall present the owner's biography and technical skills.
-- **FR-08:** The about page shall provide access to the downloadable CV.
+- **FR-07:** The about page shall present the owner's biography and technical skills without providing a CV or downloadable resume.
 
 ### Projects
 
-- **FR-09:** The projects directory shall list projects managed through the projects content collection.
-- **FR-10:** Visitors shall be able to filter the project list by technology.
-- **FR-11:** Each project shall have a detail page accessible through a stable slug-based URL.
-- **FR-12:** A project detail page shall display its descriptive content, technology list, and configured project links.
-- **FR-13:** A project may include locally stored images or video. The project detail page shall display configured media appropriately.
-- **FR-14:** A project marked as featured shall be eligible for display in the home page's selected-project section.
+- **FR-08:** The projects directory shall list projects managed through the projects content collection.
+- **FR-09:** Visitors shall be able to filter the project list by technology.
+- **FR-10:** Each project shall have a detail page accessible through a stable slug-based URL.
+- **FR-11:** A project detail page shall display its descriptive content, technology list, and configured project links.
+- **FR-12:** A project may include locally stored images or video. The project detail page shall display configured media appropriately.
+- **FR-13:** A project marked as featured shall be eligible for display in the home page's selected-project section.
 
 ### Blog
 
-- **FR-15:** The blog directory shall list articles managed through the articles content collection.
-- **FR-16:** Each article shall have a detail page accessible through a stable slug-based URL.
-- **FR-17:** An article page shall display its title, publication date when available, and Markdown content.
-- **FR-18:** Blog articles shall not require project image or video galleries.
+- **FR-14:** The blog directory shall list articles managed through the articles content collection.
+- **FR-15:** Each article shall have a detail page accessible through a stable slug-based URL.
+- **FR-16:** An article page shall display its title, publication date when available, and Markdown content.
+- **FR-17:** Blog articles shall not require project image or video galleries.
 
 ### Experience
 
-- **FR-19:** The home page shall display professional experience entries managed through the experience content collection.
-- **FR-20:** Each experience entry shall present its role, organization, dates, and description when those values are provided.
+- **FR-18:** The home page shall display professional experience entries managed through the experience content collection.
+- **FR-19:** Each experience entry shall present its role, organization, dates, and description when those values are provided.
 
 ### Contact
 
-- **FR-21:** The contact page shall provide a form that submits messages through Formspree.
-- **FR-22:** The contact form shall validate required input before submission and provide visitors with clear submission status feedback.
-- **FR-23:** The contact page shall link to the owner's professional profiles.
-
-### CV
-
-- **FR-24:** Visitors shall be able to download the CV from a link on the website.
-- **FR-25:** The CV shall be excluded from search engine indexing while remaining accessible to visitors who follow the website's download link.
+- **FR-20:** The contact page shall provide a form that submits messages through Formspree.
+- **FR-21:** The contact form shall validate required input before submission and provide visitors with clear submission status feedback.
+- **FR-22:** The contact page shall link to the owner's professional profiles.
 
 ## Non-functional requirements
 
@@ -92,14 +86,13 @@ The website presents the owner's professional profile, projects, experience, tec
 ### Search visibility and metadata
 
 - **NFR-12:** Public pages shall provide page-appropriate titles and descriptions for search and social sharing.
-- **NFR-13:** The CV file shall include an explicit crawler directive to prevent indexing.
 
 ### External services
 
-- **NFR-14:** Contact form submissions shall use Formspree and shall not expose private service credentials in client-visible code.
-- **NFR-15:** The website shall remain usable if an optional external service is unavailable; service-dependent actions shall communicate failures clearly.
+- **NFR-13:** Contact form submissions shall use Formspree and shall not expose private service credentials in client-visible code.
+- **NFR-14:** The website shall remain usable if an optional external service is unavailable; service-dependent actions shall communicate failures clearly.
 
 ### Release verification
 
-- **NFR-16:** Before a release, the project shall pass `astro check` and `astro build`.
-- **NFR-17:** Before a release, the built site shall be manually checked in a browser for its main routes, responsive navigation and layouts, project filtering, CV download, and contact form feedback.
+- **NFR-15:** Before a release, the project shall pass `astro check` and `astro build`.
+- **NFR-16:** Before a release, the built site shall be manually checked in a browser for its main routes, responsive navigation and layouts, project filtering, and contact form feedback.

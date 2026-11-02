@@ -23,7 +23,6 @@ The site will include:
 - A projects directory with technology filtering and a detail page for each project.
 - A blog directory and individual article pages.
 - A contact page with a Formspree contact form and professional profile links.
-- A downloadable CV stored with the site. The CV should be accessible to visitors through the website but excluded from search engine indexing.
 
 The site will use Astro content collections for projects, experience, and articles. Project media, including images and video where needed, will be stored locally and organized with the content.
 
@@ -42,4 +41,3 @@ The site will use Astro content collections for projects, experience, and articl
 - The site builds successfully with its content collections and generates the expected pages.
 - Layouts and interactions remain usable on mobile, tablet, and desktop screen sizes.
 - The site loads efficiently, supports accessible navigation and content, and provides appropriate search metadata.
-- The downloadable CV is available from the site but carries an explicit instruction not to index it.

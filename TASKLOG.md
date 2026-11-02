@@ -6,9 +6,9 @@
   - Create the Astro project in the repository root using the current stable Astro release and its strict TypeScript setup. To initialize it directly in the current root directory, run `pnpm create astro@latest . --template minimal`.
   - Use pnpm as the package manager and verify that `package.json` and `pnpm-lock.yaml` exist so installs are reproducible. If dependencies are not installed yet, run `pnpm install` to generate or update the lockfile.
   - Set the Node.js engine requirement in `package.json` to a version supported by the selected Astro release and available in Vercel; confirm this manually.
-  - Add `@astrojs/check`, `typescript`, and `@types/node` as development dependencies so `astro check` can validate the Astro application and Node APIs in strict TypeScript mode. Run `pnpm add --save-dev @astrojs/check typescript @types/node`.
+  - Add `@astrojs/check` and `typescript` as development dependencies so `astro check` can validate the Astro application in strict TypeScript mode. Run `pnpm add --save-dev @astrojs/check typescript`.
   - Add the standard Astro scripts for local development, production build, preview, and type checking. Define the type-check script as `check` with the command `astro check`; for example, run `pnpm pkg set scripts.check="astro check"`.
-  - Keep `tsconfig.json` in strict mode and resolve project diagnostics rather than weakening compiler settings; verify that it extends `astro/tsconfigs/strict` and includes Node type definitions for build-time filesystem APIs.
+  - Keep `tsconfig.json` in strict mode and resolve project diagnostics rather than weakening compiler settings; verify that it extends `astro/tsconfigs/strict`.
   - Create the initial application directories `src/components/`, `src/layouts/`, `src/pages/`, `src/styles/`, and `src/content/`.
 
 - [X] **Task 1.2: Configure Tailwind CSS and the site design tokens**
@@ -21,7 +21,7 @@
 - [X] **Task 1.3: Establish project-wide metadata and static asset conventions**
   - Set a searchable placeholder URL ending in `TO_REPLACE` as Astro's `site` value in `astro.config.mjs`, for example `https://portfolio-TO_REPLACE.vercel.app`, so canonical URL generation works during development.
   - Add the site favicon under `public/` and reference it from the shared layout.
-  - Establish predictable locations and naming for public assets, project media, and the downloadable CV as described in `.github/docs/content-and-assets.md`.
+  - Establish predictable locations and naming for public assets and project media as described in `.github/docs/content-and-assets.md`.
   - Ensure local environment files such as `.env` are excluded from version control and add `.env.example` with a clearly searchable non-secret placeholder such as `PUBLIC_FORMSPREE_ENDPOINT=https://formspree.io/f/FORM_ID_TO_REPLACE` when the form integration is configured.
   - Use the literal suffix `TO_REPLACE` in every fake URL or configuration value that a project owner must replace, so these values can be found with a repository-wide search before launch.
 
@@ -97,12 +97,8 @@
   - Write clearly identified fictional Spanish placeholder copy for the introduction, calls to action, section descriptions, and empty states; use `TO_REPLACE` for the displayed owner or portfolio name.
   - Link each section to its corresponding directory and render intentional empty states if a collection has no public entries.
 
-- [X] **Task 4.2: Build the about page and CV download link**
+- [X] **Task 4.2: Build the about page**
   - Create `src/pages/about.astro` with clearly identified fictional Spanish biography and skills content, using lorem ipsum-style copy and sample technologies rather than inventing facts about a real person.
-  - Add a visible indication that the CV asset is pending replacement; do not create or link to a fabricated CV file and do not leave a download link that points to a missing asset.
-  - Use Node filesystem APIs during the Astro build to detect whether `public/cv/cv.pdf` exists, with Node types enabled from the project setup so strict TypeScript diagnostics remain valid.
-  - Place an HTML `TODO` comment next to the CV placeholder identifying the required local asset path and instructing the maintainer to replace the placeholder with the real CV before enabling the download link.
-  - Add the download link only when a real CV asset is supplied, and ensure it points to the final public path.
   - Keep the about-page layout responsive and provide page-specific title and description metadata through `BaseLayout`.
 
 - [X] **Task 4.3: Build the projects directory and accessible technology filter**
@@ -131,19 +127,13 @@
 
 ## Phase 5: Search visibility, assets, and Vercel configuration
 
-- [ ] **Task 5.1: Configure the downloadable CV and its no-index response**
-  - Add the owner-provided CV file under the selected public asset path and link to it from `src/pages/about.astro`.
-  - Add or update `vercel.json` in the `portfolio-new/` repository root with a response-header rule matching only the CV's exact URL path and setting `X-Robots-Tag: noindex`.
-  - Keep the CV publicly accessible through the download link and do not disallow its path in `public/robots.txt`.
-  - Confirm Vercel applies the custom header to the static file and that the rule does not unintentionally apply `noindex` to other public pages or assets.
-
-- [ ] **Task 5.2: Add site-wide search and social metadata**
+- [ ] **Task 5.1: Add site-wide search and social metadata**
   - Ensure `src/layouts/BaseLayout.astro` emits page-specific title, description, canonical URL, Open Graph metadata, and social image metadata.
-  - Add `public/robots.txt` with rules that permit crawling of public pages and do not block the CV from being fetched for its `X-Robots-Tag` directive.
+  - Add `public/robots.txt` with rules that permit crawling of public pages.
   - Keep a production-domain placeholder ending in `TO_REPLACE` in Astro's `site` configuration until the real Vercel domain is available, then replace it and verify canonical URLs on the generated pages.
   - Do not introduce sitemap or SEO packages unless a concrete requirement arises; use Astro and static files for the initial metadata needs.
 
-- [ ] **Task 5.3: Configure the Vercel project for Astro deployments**
+- [ ] **Task 5.2: Configure the Vercel project for Astro deployments**
   - Connect the `portfolio-new/` repository root to a Vercel project and select the Astro framework preset.
   - Configure dependency installation from the pnpm lockfile and set the Vercel build command to run the type check and production build in sequence, such as `pnpm run check && pnpm run build`.
   - Set `dist` as the generated output directory and confirm it matches Astro's configured build output.
@@ -157,20 +147,17 @@
   - Run `pnpm install --frozen-lockfile` from the `portfolio-new/` repository root.
   - Run `pnpm exec astro check` and resolve Astro, TypeScript, component-prop, and content-schema diagnostics.
   - Run `pnpm build` and confirm Astro generates the static site into `dist/` without missing content, broken imports, or invalid collection entries.
-  - Inspect generated output for the expected home, about, projects, project detail, blog, article detail, contact, and 404 pages, plus the CV and project media assets.
+  - Inspect generated output for the expected home, about, projects, project detail, blog, article detail, contact, and 404 pages, plus project media assets.
 
 - [ ] **Task 6.2: Manually verify responsive behavior, accessibility, and interactions**
   - Review the deployed or locally previewed site at mobile, tablet, and desktop viewport sizes and confirm no unintended horizontal scrolling.
-  - Verify the mobile menu, keyboard navigation, visible focus states, project technology filters, project and article links, and CV download.
+  - Verify the mobile menu, keyboard navigation, visible focus states, project technology filters, and project and article links.
   - Check semantic headings, form labels, alternative text, text/control contrast, and reduced-motion behavior if animations are present.
   - Submit the contact form through Formspree and verify clear success and failure feedback.
   - Search the entire repository for `TO_REPLACE` before production release and replace every placeholder value; confirm none remain in production links, metadata, form settings, or visible content.
   - Search the content collections and page copy for demo labels and lorem ipsum, and replace fictional examples with owner-approved content before production release.
-  - Confirm the real CV file has been supplied and the placeholder notice and adjacent TODO comment have been removed before enabling its download link.
   - Confirm every visitor-facing page and message is in Spanish and that no empty optional content produces broken layouts.
 
-- [ ] **Task 6.3: Verify the Vercel production deployment and CV indexing directive**
+- [ ] **Task 6.3: Verify the Vercel production deployment**
   - Confirm the production deployment succeeds from the configured branch and that all primary routes and local assets load on the production domain.
-  - Request the CV URL with an HTTP HEAD request and verify the response includes `X-Robots-Tag: noindex` while returning the file successfully.
-  - Confirm public HTML pages do not inherit the CV's no-index header and that the CV path is not blocked by `robots.txt`.
   - Verify the production contact form endpoint, canonical URLs, page metadata, and responsive navigation after deployment.

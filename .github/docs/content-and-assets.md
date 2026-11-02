@@ -69,14 +69,11 @@ Store project images and videos locally in a clearly organized structure associa
 
 - Store general public assets and downloadable files under `public/assets/`.
 - Store project-specific media under `src/assets/projects/<project-slug>/` and keep filenames lowercase and kebab-case.
-- Store the downloadable CV at the public path `/cv/cv.pdf`; create or replace the local file at `public/cv/cv.pdf`.
 - Store site-wide social-sharing images, when needed, under `public/assets/social/` with descriptive lowercase kebab-case filenames.
 - Use appropriately sized, optimized image files for their display context.
 - Provide meaningful alternative text for informative images; use empty alternative text for purely decorative images.
 - Use video only when it adds useful project context. Provide a poster image where appropriate and avoid loading large video files before playback is needed.
 - Do not add project image or video galleries to blog articles unless the content requirements change.
-
-Store the downloadable CV as a local site asset. It must be linked from the website, remain downloadable, and be served with an `X-Robots-Tag: noindex` response header so search engines are instructed not to index the file. Configure and verify this response behavior in the deployment environment; a `robots.txt` disallow rule alone is insufficient.
 
 ## Astro collection validation
 

@@ -1,10 +1,5 @@
 ---
-import { existsSync } from "node:fs";
-import { fileURLToPath } from "node:url";
 import BaseLayout from "../layouts/BaseLayout.astro";
-
-const cvPath = fileURLToPath(new URL("../../public/cv/cv.pdf", import.meta.url));
-const hasRealCv = existsSync(cvPath);
 
 const skills = [
 	"Astro",
@@ -19,7 +14,7 @@ const skills = [
 
 <BaseLayout
 	title="Sobre mí | Portfolio name TO_REPLACE"
-	description="Biografía ficticia, habilidades técnicas de ejemplo y estado pendiente del CV para Portfolio name TO_REPLACE."
+	description="Biografía ficticia y habilidades técnicas de ejemplo para Portfolio name TO_REPLACE."
 >
 	<section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20" aria-labelledby="titulo-sobre-mi">
 		<header class="max-w-3xl">
@@ -63,28 +58,6 @@ const skills = [
 					</ul>
 				</section>
 
-				<section aria-labelledby="cv" class="rounded-sm border border-selective-yellow bg-selective-yellow/10 p-6">
-					<h2 id="cv" class="text-xl font-bold text-rich-black">Currículum vitae</h2>
-
-					{hasRealCv ? (
-						<a
-							href="/cv/cv.pdf"
-							download
-							class="mt-4 inline-flex min-h-12 items-center justify-center rounded-sm bg-accent-red px-5 py-3 font-semibold text-white hover:bg-red-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-red"
-						>
-							Descargar CV
-							<span aria-hidden="true" class="ml-2">↓</span>
-						</a>
-					) : (
-						<div class="mt-4">
-							<p class="font-semibold text-rich-black">CV pendiente de reemplazo.</p>
-							<p class="mt-2 leading-7 text-rich-black/75">
-								Todavía no se ha proporcionado un CV real. El enlace de descarga permanecerá oculto hasta que exista el archivo correspondiente.
-							</p>
-							<!-- TODO: Replace public/cv/cv.pdf with the owner's real CV before enabling the download link in this placeholder. Remove this pending notice and TODO comment once the real PDF is supplied. -->
-						</div>
-					)}
-				</section>
 			</aside>
 		</div>
 

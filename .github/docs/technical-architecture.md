@@ -43,9 +43,7 @@ Shared layouts provide the page shell and common metadata. Reusable components r
 
 ## Local assets
 
-Project images and videos, along with the downloadable CV, are stored as local site assets and included in the production build. Project content references the media associated with each entry. Images should use suitable dimensions and formats for their display context; video should not be loaded unnecessarily before a visitor needs it.
-
-The CV must remain directly downloadable while being excluded from search engine indexing. The deployment must serve the CV with an explicit `X-Robots-Tag: noindex` response header. A `robots.txt` disallow rule alone is not sufficient to guarantee that the file is not indexed.
+Project images and videos are stored as local site assets and included in the production build. Project content references the media associated with each entry. Images should use suitable dimensions and formats for their display context; video should not be loaded unnecessarily before a visitor needs it.
 
 ## External service integration
 
@@ -59,6 +57,6 @@ The project does not require a dedicated automated test suite as a baseline. Bef
 
 - Run `astro check` to check Astro and TypeScript diagnostics.
 - Run `astro build` to validate the production build and generate the static site.
-- Manually review the primary routes and key interactions in a browser, including responsive layouts, project filtering, CV download, and contact form feedback.
+- Manually review the primary routes and key interactions in a browser, including responsive layouts, project filtering, and contact form feedback.
 
 These release checks complement the collection schema validation performed during the build.

@@ -7,7 +7,7 @@ A Spanish-language personal portfolio and technical blog built with Astro. The s
 ## Planned features
 
 - Home page with an introduction, featured projects, professional experience, and recent articles.
-- About page with a biography, skills, and a downloadable CV.
+- About page with a biography and skills.
 - Project directory with technology filters and individual project pages.
 - Blog directory and Markdown article pages.
 - Contact form powered by Formspree and links to professional profiles.
@@ -80,7 +80,7 @@ Projects, professional experience, and articles are maintained as Markdown entri
 
 During development, example entries and page copy may use clearly identified fictional data. Replace demo content and every `TO_REPLACE` value before production. Search the repository for `TO_REPLACE` as part of the production readiness check.
 
-The CV must be provided as a real local file before enabling its download link. Do not create a fabricated CV or leave a link to a missing file. In production, Vercel must serve the CV with `X-Robots-Tag: noindex` while keeping it publicly downloadable.
+The portfolio does not include a CV or downloadable resume. Project documentation, content, and public assets should not introduce a CV download requirement unless the product scope changes explicitly.
 
 ## Verification
 
@@ -91,4 +91,4 @@ pnpm exec astro check
 pnpm build
 ```
 
-Then manually review the main routes, interactions, and responsive layouts at mobile, tablet, and desktop sizes. Verify the Formspree submission flow and confirm the CV response includes the required no-index header in production.
+Then manually review the main routes, interactions, and responsive layouts at mobile, tablet, and desktop sizes. Verify the Formspree submission flow and confirm the production deployment.
