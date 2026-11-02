@@ -143,8 +143,8 @@
 
 ## Phase 6: Verification and release
 
-- [ ] **Task 6.1: Verify collection data, routes, and production build**
-  - Run `pnpm install --frozen-lockfile` from the `portfolio-new/` repository root.
+- [X] **Task 6.1: Verify collection data, routes, and production build**
+  - Run `pnpm install --frozen-lockfile` from the repository root.
   - Run `pnpm exec astro check` and resolve Astro, TypeScript, component-prop, and content-schema diagnostics.
   - Run `pnpm build` and confirm Astro generates the static site into `dist/` without missing content, broken imports, or invalid collection entries.
   - Inspect generated output for the expected home, about, projects, project detail, blog, article detail, contact, and 404 pages, plus project media assets.
