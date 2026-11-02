@@ -133,13 +133,13 @@
   - Keep a production-domain placeholder ending in `TO_REPLACE` in Astro's `site` configuration until the real Vercel domain is available, then replace it and verify canonical URLs on the generated pages.
   - Do not introduce sitemap or SEO packages unless a concrete requirement arises; use Astro and static files for the initial metadata needs.
 
-- [ ] **Task 5.2: Configure the Vercel project for Astro deployments**
-  - Connect the `portfolio-new/` repository root to a Vercel project and select the Astro framework preset.
-  - Configure dependency installation from the pnpm lockfile and set the Vercel build command to run the type check and production build in sequence, such as `pnpm run check && pnpm run build`.
+- [X] **Task 5.2: Configure the Vercel project for Astro deployments**
+  - Connect the repository root to a Vercel project and select the Astro framework preset.
+  - Configure dependency installation with `pnpm install --frozen-lockfile`, based on `pnpm-lock.yaml`, and set the Vercel build command to run the type check and production build in sequence, such as `pnpm run check && pnpm run build`.
   - Set `dist` as the generated output directory and confirm it matches Astro's configured build output.
   - Set the production branch and verify that non-production changes create preview deployments.
   - Configure a fake Formspree endpoint ending in `TO_REPLACE` in Vercel's project environment as a searchable placeholder, and replace it with the real endpoint before enabling production form submissions.
-  - Ensure preview deployments are treated separately from the production domain and verify production canonical URLs after the first deployment.
+  - Ensure preview deployments are treated separately from the production domain and verify production canonical URLs after the first deployment. Once Vercel provides the real production domain, replace the `https://portfolio-TO_REPLACE.vercel.app` placeholder in `astro.config.mjs` with the production domain without `TO_REPLACE`, redeploy, and inspect generated production pages to confirm canonical links and Open Graph URLs use that domain while preview deployments remain separate.
 
 ## Phase 6: Verification and release
 
