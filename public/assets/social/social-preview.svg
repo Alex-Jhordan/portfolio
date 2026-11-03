@@ -1,10 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
-  <title id="title">Portfolio name TO_REPLACE</title>
-  <desc id="description">Imagen de vista previa para el portfolio profesional y blog técnico</desc>
+  <title id="title">Alex Jhordan — Full Stack Software Engineer</title>
+  <desc id="description">Portafolio profesional de Alex Jhordan: proyectos, experiencia, desarrollo de software y artículos técnicos.</desc>
   <rect width="1200" height="630" fill="#F4F7F5"/>
-  <rect x="48" y="48" width="1104" height="534" rx="24" fill="#1B2623"/>
-  <rect x="48" y="48" width="16" height="534" rx="8" fill="#E05A47"/>
-  <text x="112" y="280" fill="#F4F7F5" font-family="Arial, sans-serif" font-size="72" font-weight="700">Portfolio name</text>
-  <text x="112" y="360" fill="#E05A47" font-family="monospace, monospace" font-size="42">TO_REPLACE</text>
-  <text x="112" y="430" fill="#F4F7F5" font-family="Arial, sans-serif" font-size="30">Portfolio profesional y blog técnico</text>
+  <rect x="48" y="48" width="1104" height="534" rx="24" fill="#0E131F"/>
+  <rect x="48" y="48" width="16" height="534" rx="8" fill="#E60023"/>
+
+  <text x="112" y="132" fill="#FFBA08" font-family="Consolas, monospace" font-size="26" font-weight="700" letter-spacing="2">
+    FULL STACK SOFTWARE ENGINEER
+  </text>
+
+  <text x="112" y="292" fill="#F4F7F5" font-family="Segoe UI, Arial, sans-serif" font-size="76" font-weight="700">
+    Del problema
+  </text>
+  <text x="112" y="376" fill="#F4F7F5" font-family="Segoe UI, Arial, sans-serif" font-size="76" font-weight="700">
+    al producto
+  </text>
+
+  <line x1="112" y1="418" x2="1088" y2="418" stroke="#A7A2A9" stroke-opacity="0.35"/>
+  <text x="112" y="482" fill="#F4F7F5" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="600">
+    Alex Jhordan
+  </text>
+  <text x="112" y="526" fill="#A7A2A9" font-family="Consolas, monospace" font-size="24">
+    Proyectos · Experiencia · Tecnología
+  </text>
 </svg>

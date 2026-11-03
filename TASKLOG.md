@@ -49,6 +49,8 @@
   - Populate the demonstration entry with the required schema fields and representative optional values, including a current-role example only if the schema supports it.
   - Define and apply a consistent ordering convention so the home-page experience timeline displays entries in the intended order.
   - Make it explicit in the entry content that the experience is demo data and must be replaced; do not invent or imply actual employment history.
+  - Validate an optional multiline `description` in the experience collection schema.
+  - Render multiline description entries in `ExperienceItem`, displaying lines beginning with `•` as bullet points.
 
 - [X] **Task 2.4: Add Spanish-language blog articles**
   - Create Markdown article entries under `src/content/articles/` using stable kebab-case filenames and slugs.
@@ -71,6 +73,9 @@
   - Make navigation adapt to narrow viewports with a keyboard-operable mobile menu and an accessible expanded/collapsed state.
   - Create `src/components/Footer.astro` with placeholder copyright information and sample profile links whose URLs contain `TO_REPLACE`; ensure the placeholder status is obvious in both labels and destinations.
   - Use semantic navigation landmarks, descriptive link text, visible focus indicators, and responsive Tailwind classes.
+  - Replace the placeholder identity and Astro favicon with a compact `A` owner mark in the project palette.
+  - Reuse `public/favicon.svg` in the shared header while keeping the mark decorative and the adjacent owner name as the accessible identity.
+  - Document the owner mark in the design, requirements, architecture, and local asset conventions.
 
 - [X] **Task 3.3: Build reusable portfolio and content components**
   - Create `src/components/Hero.astro` for the home-page introduction, concise profile, and primary calls to action.
@@ -92,13 +97,18 @@
 
 - [X] **Task 4.1: Build the home page**
   - Create `src/pages/index.astro` and compose `BaseLayout`, `Hero`, `ProjectCard`, `ExperienceItem`, and `ArticleCard`.
+  - Present a client-oriented home-page hero that leads with the value proposition, keeps the professional eyebrow concise, and uses projects and contact as the primary actions without listing technologies in the hero copy.
   - Query the `projects`, `experience`, and `articles` collections at build time.
   - Display featured projects in configured order, experience entries in the agreed timeline order, and the latest published articles by publication date.
-  - Write clearly identified fictional Spanish placeholder copy for the introduction, calls to action, section descriptions, and empty states; use `TO_REPLACE` for the displayed owner or portfolio name.
-  - Link each section to its corresponding directory and render intentional empty states if a collection has no public entries.
+  - Write Spanish introduction copy, calls to action, section descriptions, and empty states with verified owner information.
+  - Link each section to its corresponding directory and render intentional visitor-oriented empty states if a collection has no public entries.
 
 - [X] **Task 4.2: Build the about page**
-  - Create `src/pages/about.astro` with clearly identified fictional Spanish biography and skills content, using lorem ipsum-style copy and sample technologies rather than inventing facts about a real person.
+  - Create `src/pages/about.astro` with a real Spanish biography and a verified list of technical skills.
+  - Present the biography in a two-column card grid on larger screens and one column on small screens.
+  - Place the main technologies in a full-width section below the biography.
+  - Add separate sections for the problem-solving process and the principles of maintainability, scope control, documentation, and testing.
+  - Provide project and contact actions in the page header and contextual closing actions after the detailed sections.
   - Keep the about-page layout responsive and provide page-specific title and description metadata through `BaseLayout`.
 
 - [X] **Task 4.3: Build the projects directory and accessible technology filter**
@@ -149,7 +159,7 @@
   - Run `pnpm build` and confirm Astro generates the static site into `dist/` without missing content, broken imports, or invalid collection entries.
   - Inspect generated output for the expected home, about, projects, project detail, blog, article detail, contact, and 404 pages, plus project media assets.
 
-- [ ] **Task 6.2: Manually verify responsive behavior, accessibility, and interactions**
+- [X] **Task 6.2: Manually verify responsive behavior, accessibility, and interactions**
   - Review the deployed or locally previewed site at mobile, tablet, and desktop viewport sizes and confirm no unintended horizontal scrolling.
   - Verify the mobile menu, keyboard navigation, visible focus states, project technology filters, and project and article links.
   - Check semantic headings, form labels, alternative text, text/control contrast, and reduced-motion behavior if animations are present.

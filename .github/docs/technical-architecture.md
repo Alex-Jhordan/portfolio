@@ -41,9 +41,13 @@ Astro's file-based routing will provide the home, about, projects directory, pro
 
 Shared layouts provide the page shell and common metadata. Reusable components render repeated interface elements such as navigation, project and article previews, technology labels, experience entries, and the footer. The implementation should preserve semantic markup and provide responsive layouts across mobile, tablet, and desktop viewports.
 
+The About page is maintained directly as an Astro page because its biography, process, and principles are portfolio-level presentation content rather than structured collection entries. Its biography uses a card-based two-column grid on larger screens and a single column on small screens. Main technologies, problem-solving process, and development principles use separate full-width sections. Calls to action appear in the header and as a closing navigation block.
+
 ## Local assets
 
 Project images and videos are stored as local site assets and included in the production build. Project content references the media associated with each entry. Images should use suitable dimensions and formats for their display context; video should not be loaded unnecessarily before a visitor needs it.
+
+Site identity assets are public static assets. `public/favicon.svg` provides the browser favicon and the compact owner mark used in the shared header. The mark uses the project palette and remains decorative in the header because the adjacent text already names the owner. Social-sharing previews use `public/assets/social/` and Open Graph/Twitter metadata is configured by `BaseLayout.astro`.
 
 ## External service integration
 

@@ -16,7 +16,13 @@ The primary navigation should provide access to:
 - Blog
 - Contact
 
-The home page should introduce the owner and provide concise paths to selected projects, professional experience, recent articles, and contact information. Project and article previews should make it clear that they lead to detail pages. The about page should present the owner's biography and skills.
+The home page should introduce the owner and provide concise paths to selected projects, professional experience, recent articles, and contact information. Project and article previews should make it clear that they lead to detail pages.
+
+The home-page hero should lead with a clear value proposition addressed to people evaluating the developer or seeking a solution, rather than putting the owner's name in the primary heading. The home page should not foreground technologies in the hero because those details belong in project and About-page content. Its primary action should direct visitors to projects and its secondary action should reinforce contact access.
+
+The about page should present the owner's biography, main technologies, problem-solving process, and software development principles. Biography content should use a readable card-based arrangement that adapts from two columns on larger screens to one column on small screens. Main technologies should form a full-width section below the biography instead of competing with it in a horizontal two-column layout. The problem-solving process and development principles should appear as separate vertical sections with clear card grids.
+
+The About page should provide direct calls to action in its header and again as a closing navigation block after the detailed sections. Header actions should offer immediate access to projects and contact. The closing actions should use specific closing language, such as exploring projects or starting a conversation.
 
 ## Responsive behavior
 
@@ -67,7 +73,7 @@ The application will use the following layouts and components. Components should
 
 ### Components
 
-- **Header:** Site identity and primary navigation, including its responsive mobile behavior.
+- **Header:** Site identity and primary navigation, including its responsive mobile behavior. The identity may combine the owner's initial mark with the owner name in a keyboard-accessible home link.
 - **Footer:** Copyright and professional profile links.
 - **Hero:** Introductory section on the home page with a concise profile and prominent navigation actions.
 - **ProjectCard:** Project preview for the home page and project directory.
@@ -81,6 +87,7 @@ Project media presentation may remain part of `ProjectLayout` initially. A separ
 ## Interaction patterns
 
 - Provide consistent navigation and clear links between directory and detail pages.
+- Keep intentional empty states visitor-oriented and avoid administrative instructions or owner-directed setup copy in published pages.
 - Make the selected state of project technology filters visually apparent. Filtering should not make projects inaccessible to keyboard or assistive technology users.
 - Give contact form fields persistent labels, indicate validation problems clearly, and provide understandable submission success or failure feedback.
 - Ensure any mobile navigation control communicates its expanded or collapsed state to assistive technology.

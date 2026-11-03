@@ -4,7 +4,7 @@ title: Artículo técnico de demostración ficticio
 description: Una muestra de contenido técnico en español creada para mostrar cómo se estructuran los artículos del portfolio. Todo el texto es ficticio y reemplazable.
 pubDate: "2026-01-15"
 updatedDate: "2026-01-20"
-draft: false
+draft: true
 tags:
   - Demostración
   - Astro

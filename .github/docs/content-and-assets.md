@@ -34,7 +34,8 @@ Experience entries should support:
 
 - Role and organization.
 - Start date and optional end date, including an indication of a current role.
-- A description of responsibilities or achievements.
+- An optional `description` field containing responsibilities or achievements.
+- Use multiline plain text for lists; lines beginning with `•` are rendered as bullet points in the timeline.
 - An ordering value or another consistent ordering convention for the home-page timeline.
 
 ### Experience timeline ordering
@@ -68,6 +69,8 @@ Articles use the `draft` boolean to keep work in progress separated from publish
 Store project images and videos locally in a clearly organized structure associated with their project entries. Use descriptive filenames and avoid duplicating the same asset unnecessarily.
 
 - Store general public assets and downloadable files under `public/assets/`.
+- Store the site favicon and reusable site-mark assets under `public/`. The favicon should use a simple, recognizable mark based on the project palette and remain legible at small sizes.
+- Store social-sharing previews under `public/assets/social/`. Social previews are used as Open Graph and Twitter/X images when a page is shared.
 - Store project-specific media under `src/assets/projects/<project-slug>/` and keep filenames lowercase and kebab-case.
 - Store site-wide social-sharing images, when needed, under `public/assets/social/` with descriptive lowercase kebab-case filenames.
 - Use appropriately sized, optimized image files for their display context.

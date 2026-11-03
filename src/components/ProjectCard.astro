@@ -25,7 +25,7 @@ const { title, summary, slug, technologies = [], cover, coverAlt } = Astro.props
 			class="aspect-video w-full object-cover"
 		/>
 	)}
-	<div class="flex h-full flex-col gap-4 p-5">
+	<div class="flex flex-col gap-4 p-5">
 		<h3 class="text-xl font-bold text-rich-black">{title}</h3>
 		<p class="leading-7 text-rich-black/75">{summary}</p>
 		{technologies.length > 0 && (

@@ -5,27 +5,27 @@ import ContactForm from "../components/ContactForm.astro";
 const profileLinks = [
 	{
 		name: "GitHub",
-		href: "https://github.com/TO_REPLACE",
+		href: "https://github.com/Alex-Jhordan",
 	},
 	{
 		name: "LinkedIn",
-		href: "https://linkedin.com/in/TO_REPLACE",
+		href: "https://www.linkedin.com/in/alex-jhordan",
 	},
 ];
 ---
 
 <BaseLayout
-	title="Contacto | Portfolio name TO_REPLACE"
-	description="Formulario de contacto de demostración y enlaces ficticios a perfiles profesionales de Portfolio name TO_REPLACE."
+	title="Contacto | Alex Jhordan"
+	description="Escríbeme para conversar sobre oportunidades profesionales, proyectos o colaboraciones."
 >
 	<section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20" aria-labelledby="titulo-contacto">
 		<header class="max-w-3xl">
-			<p class="font-mono text-sm uppercase tracking-wide text-accent-red">Página de demostración</p>
+			<p class="font-mono text-sm uppercase tracking-wide text-accent-red">Hablemos</p>
 			<h1 id="titulo-contacto" class="mt-3 text-4xl font-bold tracking-tight text-rich-black sm:text-5xl">
 				Contacto
 			</h1>
 			<p class="mt-5 text-lg leading-8 text-rich-black/80">
-				Usa este formulario de ejemplo para comprobar la interfaz y los estados de envío. Sustituye la configuración y los perfiles ficticios antes de publicar.
+				¿Tienes una oportunidad, proyecto o idea en mente? Escríbeme y conversaremos sobre cómo puedo aportar.
 			</p>
 		</header>
 
@@ -37,10 +37,10 @@ const profileLinks = [
 			<aside aria-labelledby="perfiles-profesionales" class="rounded-sm bg-rich-black p-6 text-seasalt sm:p-8">
 				<h2 id="perfiles-profesionales" class="text-2xl font-bold">Perfiles profesionales</h2>
 				<p class="mt-3 leading-7 text-seasalt/75">
-					Enlaces de ejemplo que contienen marcadores <code>TO_REPLACE</code>.
+					Conoce mi trayectoria y otros proyectos desde mis perfiles profesionales.
 				</p>
 
-				<nav aria-label="Perfiles profesionales de demostración" class="mt-5">
+				<nav aria-label="Perfiles profesionales" class="mt-5">
 					<ul class="space-y-2">
 						{profileLinks.map((profile) => (
 							<li>
@@ -50,9 +50,8 @@ const profileLinks = [
 									target="_blank"
 									class="inline-flex min-h-11 items-center underline-offset-4 hover:text-selective-yellow hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-selective-yellow"
 								>
-									{profile.name} TO_REPLACE <span aria-hidden="true" class="ml-2">↗</span>
+									{profile.name} <span aria-hidden="true" class="ml-2">↗</span>
 								</a>
-								<!-- TODO: Replace this sample GitHub or LinkedIn URL containing TO_REPLACE with the owner's real professional profile URL. -->
 							</li>
 						))}
 					</ul>

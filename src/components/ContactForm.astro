@@ -6,7 +6,7 @@ interface Props {
 
 const {
 	title = "Contacto",
-	description = "Completa los campos para enviar un mensaje al propietario del portfolio.",
+	description = "Completa los campos y envíame un mensaje.",
 } = Astro.props;
 
 const endpoint = import.meta.env.PUBLIC_FORMSPREE_ENDPOINT?.trim() || "";
@@ -27,7 +27,7 @@ const isConfigured = endpoint.length > 0 && !endpoint.includes("TO_REPLACE");
 		role="alert"
 		data-configuration-status
 	>
-		Formulario de demostración: configura <code>PUBLIC_FORMSPREE_ENDPOINT</code> antes de habilitar los envíos. La configuración actual es un marcador <code>TO_REPLACE</code>.
+		El formulario no está disponible temporalmente. Puedes contactarme desde los perfiles profesionales.
 	</div>
 
 	<form

@@ -17,9 +17,9 @@ const {
 	canonicalUrl,
 } = Astro.props;
 
-const defaultTitle = "Portfolio name TO_REPLACE";
+const defaultTitle = "Alex Jhordan";
 const defaultDescription = "Portafolio profesional y blog técnico de demostración. Contenido de ejemplo TO_REPLACE.";
-const fallbackSiteUrl = "https://portfolio-TO_REPLACE.vercel.app";
+const fallbackSiteUrl = "https://alex-jhordan.vercel.app";
 const defaultSocialImage = "/assets/social/social-preview.svg";
 const siteUrl = Astro.site ?? new URL(fallbackSiteUrl);
 const pageTitle = title?.trim() || defaultTitle;
@@ -40,7 +40,6 @@ const socialImageUrl = new URL(socialImage?.trim() || defaultSocialImage, siteUr
 		<meta name="theme-color" content="#F4F7F5" />
 
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
 		<link rel="canonical" href={canonical} />
 
 		<title>{pageTitle}</title>

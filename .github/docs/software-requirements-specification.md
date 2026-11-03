@@ -26,13 +26,14 @@ The website presents the owner's professional profile, projects, experience, tec
 
 ### Home page
 
-- **FR-04:** The home page shall introduce the owner and provide clear paths to projects and contact information.
+- **FR-04:** The home page shall introduce a clear value proposition and provide paths to projects and contact information. Its hero shall lead with the work or solution rather than prioritizing the owner's name.
 - **FR-05:** The home page shall display selected projects, professional experience, and recent blog articles when corresponding content is available.
 - **FR-06:** Each preview displayed on the home page shall link to its corresponding detail page or directory.
+- **FR-06A:** The shared header and browser favicon shall use a compact owner mark based on the established project palette. The mark shall remain decorative when adjacent owner-name text is present and must provide sufficient contrast and recognizable letter sizing.
 
 ### About page
 
-- **FR-07:** The about page shall present the owner's biography and technical skills without providing a CV or downloadable resume.
+- **FR-07:** The about page shall present the owner's biography, technical skills, problem-solving process, and development principles without providing a CV or downloadable resume. It shall provide project and contact actions in the header and after the detailed content.
 
 ### Projects
 

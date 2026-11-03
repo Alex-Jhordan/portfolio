@@ -58,6 +58,7 @@ const experience = defineCollection({
     startDate: isoDate,
     endDate: isoDate.optional(),
     current: z.boolean().default(false),
+    description: z.string().trim().optional(),
     order: z.number().int().nonnegative(),
   }).superRefine((value, context) => {
     if (value.current && value.endDate) {

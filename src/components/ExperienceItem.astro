@@ -17,10 +17,19 @@ const formatDate = (value: string) => {
 		: new Intl.DateTimeFormat("es", { month: "long", year: "numeric" }).format(date);
 };
 
+const descriptionLines = description
+	?.split(/\r?\n/u)
+	.map((line) => line.trim())
+	.filter(Boolean) ?? [];
+const paragraphLines = descriptionLines.filter((line) => !line.startsWith("•"));
+const bulletLines = descriptionLines
+	.filter((line) => line.startsWith("•"))
+	.map((line) => line.replace(/^•\s*/u, ""));
+
 ---
 
 <article class="relative border-l border-rose-quartz/70 pl-6 pb-8 last:pb-0">
-	<span aria-hidden="true" class="absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full bg-accent-red ring-4 ring-seasalt"></span>
+	<span aria-hidden="true" class="absolute -left-1.25 top-1.5 h-2.5 w-2.5 rounded-full bg-accent-red ring-4 ring-seasalt"></span>
 	<h3 class="text-xl font-bold text-rich-black">{role}</h3>
 	<p class="mt-1 font-semibold text-rich-black/75">{organization}</p>
 	<p class="mt-2 font-mono text-xs uppercase tracking-wide text-rich-black/60">
@@ -34,5 +43,14 @@ const formatDate = (value: string) => {
 			<span>Sin fecha de finalización</span>
 		)}
 	</p>
-	{description && <p class="mt-4 max-w-2xl leading-7 text-rich-black/75">{description}</p>}
+	{paragraphLines.map((line) => (
+		<p class="mt-4 max-w-2xl leading-7 text-rich-black/75">{line}</p>
+	))}
+	{bulletLines.length > 0 && (
+		<ul class="mt-4 max-w-2xl space-y-2 list-disc pl-5 leading-7 text-rich-black/75">
+			{bulletLines.map((line) => (
+				<li>{line}</li>
+			))}
+		</ul>
+	)}
 </article>

@@ -43,6 +43,7 @@ Consult the relevant guides before working on related tasks:
 - Keep visitor-facing interface text and published content in Spanish; keep source code, filenames, and project documentation in English.
 - Use Astro content collections for projects, professional experience, and blog articles. Use Markdown as the initial content format.
 - Preserve responsive behavior across mobile, tablet, and desktop sizes and use semantic, keyboard-accessible HTML.
+- Keep the About page structured around real biography content, technical skills, problem-solving process, and development principles; use no fictional or placeholder career copy in visitor-facing output.
 - Keep browser-side JavaScript limited to interactions that need it. Do not add application libraries or frameworks without a concrete requirement.
 - Keep project media local.
 - Keep Formspree configuration replaceable and do not commit private credentials. Search for `TO_REPLACE` placeholders before production release.

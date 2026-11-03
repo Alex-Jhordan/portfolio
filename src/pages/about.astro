@@ -2,77 +2,183 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const skills = [
-	"Astro",
-	"TypeScript",
-	"JavaScript",
-	"HTML y CSS",
+	"Laravel",
+	"Livewire",
+	"Filament",
+	"CodeIgniter",
+	"PHP",
+	"Vue.js",
 	"Tailwind CSS",
+	"WordPress",
+	"WooCommerce",
+	"APIs REST",
+	"MySQL",
 	"Git",
-	"Pruebas y calidad",
+	"RAG",
+	"LLMs",
+	"Agentic Tool Calling",
+];
+
+const biography = [
+	"Tengo más de 3 años de experiencia involucrado en el desarrollo de software. He participado desde la toma de requerimientos y el diseño de bases de datos hasta la implementación, el despliegue y el mantenimiento de aplicaciones. Mi trabajo incluye backoffices, sitios informativos, migraciones a una arquitectura más mantenible, plugins y temas para WordPress, APIs e integraciones entre sistemas.",
+	"Actualmente estoy explorando los roles de AI Native Software Developer y AI Engineer. Desarrollo proyectos con integración de LLMs, RAG, llamadas a herramientas por agentes y flujos asistidos por IA bajo metodologías guiadas por especificaciones técnicas.",
+	"Me motiva resolver problemas: descubrir lo que no sé, aprender, implementar, probar, equivocarme y volver a intentarlo hasta encontrar una solución. Esa curiosidad me lleva a construir proyectos personales.",
+	"Me adapto tanto al trabajo individual como al trabajo en equipo y mantengo una comunicación clara para comprender el contexto, compartir decisiones y simplificar procesos repetitivos.",
+];
+
+const workingProcess = [
+	{
+		number: "01",
+		title: "Comprender el problema",
+		description: "Identifico la necesidad real, registro los puntos relevantes y planteo posibles soluciones antes de comenzar a desarrollar.",
+	},
+	{
+		number: "02",
+		title: "Validar la propuesta",
+		description: "Investigo la viabilidad técnica, defino los requisitos y los acuerdos necesarios para evitar asumir funcionalidades no solicitadas.",
+	},
+	{
+		number: "03",
+		title: "Planificar y construir",
+		description: "Documento la arquitectura y el detalle de implementación para mantener decisiones, alcance y progreso claros durante todo el proyecto.",
+	},
+];
+
+const principles = [
+	{
+		title: "Mantenibilidad desde el inicio",
+		description: "Busco soluciones ordenadas y modulares, con automatización mediante integración continua, despliegue continuo u otras tareas repetibles.",
+	},
+	{
+		title: "Alcance definido",
+		description: "No amplio una funcionalidad sin validar el requerimiento. Un alcance claro evita complejidad innecesaria y cambios que comprometan el mantenimiento.",
+	},
+	{
+		title: "Decisiones documentadas",
+		description: "Registro las decisiones importantes, su contexto y las alternativas consideradas para que el proyecto pueda comprenderse y modificarse en el futuro.",
+	},
+	{
+		title: "Pruebas que protegen el sistema",
+		description: "Utilizo pruebas como comprobaciones de que los cambios no introducen errores en comportamientos que ya funcionan, especialmente en la lógica crítica.",
+	},
 ];
 ---
 
 <BaseLayout
-	title="Sobre mí | Portfolio name TO_REPLACE"
-	description="Biografía ficticia y habilidades técnicas de ejemplo para Portfolio name TO_REPLACE."
+	title="Sobre mí | Alex Jhordan"
+	description="Conoce el perfil profesional, experiencia y forma de trabajar de Alex Jhordan, full stack software engineer."
 >
 	<section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20" aria-labelledby="titulo-sobre-mi">
 		<header class="max-w-3xl">
-			<p class="font-mono text-sm uppercase tracking-wide text-accent-red">Perfil ficticio de demostración</p>
+			<p class="font-mono text-sm uppercase tracking-wide text-accent-red">Sobre mi trabajo</p>
 			<h1 id="titulo-sobre-mi" class="mt-3 text-4xl font-bold tracking-tight text-rich-black sm:text-5xl">
-				Sobre Portfolio name TO_REPLACE
+				Hola, soy Alex Jhordan
 			</h1>
 			<p class="mt-5 text-lg leading-8 text-rich-black/80">
-				Esta biografía utiliza contenido de ejemplo y no afirma experiencia, formación ni datos reales sobre una persona.
+				Full Stack Software Engineer especializado en el desarrollo de soluciones web, APIs y sistemas de gestión.
 			</p>
+			<nav aria-label="Acciones principales sobre el perfil" class="mt-8 flex flex-col gap-3 sm:flex-row">
+				<a
+					href="/projects/"
+					class="inline-flex min-h-12 items-center justify-center rounded-sm bg-accent-red px-5 py-3 font-semibold text-white hover:bg-red-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-red"
+				>
+					Ver proyectos
+				</a>
+				<a
+					href="/contact/"
+					class="inline-flex min-h-12 items-center justify-center rounded-sm border border-rich-black px-5 py-3 font-semibold text-rich-black hover:border-accent-red hover:text-accent-red focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-red"
+				>
+					Contactar
+				</a>
+			</nav>
 		</header>
 
-		<div class="mt-10 grid gap-10 lg:grid-cols-[minmax(0,2fr)_minmax(18rem,1fr)]">
-			<section aria-labelledby="biografia" class="rounded-sm border border-rose-quartz/40 bg-white p-6 sm:p-8">
-				<h2 id="biografia" class="text-2xl font-bold text-rich-black">Biografía</h2>
-				<div class="mt-5 max-w-2xl space-y-4 leading-8 text-rich-black/75">
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Este texto de demostración describe de forma ficticia a una persona interesada en desarrollar productos digitales claros, accesibles y fáciles de mantener.
+		<section aria-labelledby="biografia" class="mt-10">
+			<header class="max-w-2xl">
+				<p class="font-mono text-sm uppercase tracking-wide text-accent-red">Biografía</p>
+				<h2 id="biografia" class="mt-3 text-3xl font-bold tracking-tight text-rich-black">
+					Trayectoria y motivación
+				</h2>
+			</header>
+			<div class="mt-8 grid gap-5 sm:grid-cols-2">
+				{biography.map((paragraph) => (
+					<p class="rounded-sm border border-rose-quartz/40 bg-white p-6 leading-8 text-rich-black/75">
+						{paragraph.trim()}
 					</p>
-					<p>
-						Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium. Sustituye este contenido por una presentación real, verificable y escrita en español antes de publicar el portfolio.
-					</p>
-					<p>
-						Su enfoque representativo combina diseño de interfaces, implementación web y colaboración técnica. Las responsabilidades, proyectos, formación y logros mostrados aquí son únicamente ejemplos.
+				))}
+			</div>
+		</section>
+
+		<section aria-labelledby="habilidades" class="mt-10 rounded-sm bg-rich-black p-6 text-seasalt sm:p-8">
+			<div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+				<div class="max-w-xl">
+					<h2 id="habilidades" class="text-2xl font-bold">Tecnologías principales</h2>
+					<p class="mt-3 text-sm leading-7 text-seasalt/75">
+						Herramientas que utilizo para convertir requisitos en soluciones mantenibles.
 					</p>
 				</div>
-			</section>
+				<ul class="flex max-w-3xl flex-wrap gap-2" aria-label="Lista de tecnologías">
+					{skills.map((skill) => (
+						<li class="rounded-sm border border-seasalt/30 px-3 py-2 font-mono text-sm">
+							{skill}
+						</li>
+					))}
+				</ul>
+			</div>
+		</section>
 
-			<aside class="space-y-6" aria-label="Información adicional">
-				<section aria-labelledby="habilidades" class="rounded-sm bg-rich-black p-6 text-seasalt sm:p-8">
-					<h2 id="habilidades" class="text-2xl font-bold">Tecnologías de ejemplo</h2>
-					<p class="mt-3 text-sm leading-7 text-seasalt/75">
-						Lista ficticia de habilidades que debe reemplazarse por competencias reales.
-					</p>
-					<ul class="mt-5 flex flex-wrap gap-2" aria-label="Lista de tecnologías demostrativas">
-						{skills.map((skill) => (
-							<li class="rounded-sm border border-seasalt/30 px-3 py-2 font-mono text-sm">
-								{skill}
-							</li>
-						))}
-					</ul>
-				</section>
+		<section aria-labelledby="proceso-de-trabajo" class="mt-16 border-t border-rose-quartz/40 pt-12">
+			<header class="max-w-2xl">
+				<p class="font-mono text-sm uppercase tracking-wide text-accent-red">Cómo afronto los problemas</p>
+				<h2 id="proceso-de-trabajo" class="mt-3 text-3xl font-bold tracking-tight text-rich-black">
+					Del problema a una solución propuesta
+				</h2>
+				<p class="mt-4 leading-7 text-rich-black/75">
+					Antes de escribir código, necesito comprender el contexto y acordar qué se debe construir.
+				</p>
+			</header>
 
-			</aside>
-		</div>
+			<div class="mt-8 grid gap-5 md:grid-cols-3">
+				{workingProcess.map((step) => (
+					<article class="rounded-sm border border-rose-quartz/40 bg-white p-6">
+						<p class="font-mono text-sm font-semibold text-accent-red" aria-hidden="true">{step.number}</p>
+						<h3 class="mt-3 text-xl font-bold text-rich-black">{step.title}</h3>
+						<p class="mt-3 leading-7 text-rich-black/75">{step.description}</p>
+					</article>
+				))}
+			</div>
+		</section>
+
+		<section aria-labelledby="principios-desarrollo" class="mt-16 border-t border-rose-quartz/40 pt-12">
+			<header class="max-w-2xl">
+				<p class="font-mono text-sm uppercase tracking-wide text-accent-red">Pilares de desarrollo</p>
+				<h2 id="principios-desarrollo" class="mt-3 text-3xl font-bold tracking-tight text-rich-black">
+					Decisiones pensadas para durar
+				</h2>
+			</header>
+
+			<div class="mt-8 grid gap-5 sm:grid-cols-2">
+				{principles.map((principle) => (
+					<article class="rounded-sm bg-seasalt p-6 ring-1 ring-rose-quartz/40">
+						<h3 class="text-xl font-bold text-rich-black">{principle.title}</h3>
+						<p class="mt-3 leading-7 text-rich-black/75">{principle.description}</p>
+					</article>
+				))}
+			</div>
+		</section>
 
 		<nav aria-label="Enlaces de la sección sobre mí" class="mt-10 flex flex-col gap-3 border-t border-rose-quartz/40 pt-8 sm:flex-row">
 			<a
 				href="/projects/"
 				class="inline-flex min-h-12 items-center justify-center rounded-sm bg-accent-red px-5 py-3 font-semibold text-white hover:bg-red-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-red"
 			>
-				Ver proyectos
+				Explorar proyectos
 			</a>
 			<a
 				href="/contact/"
 				class="inline-flex min-h-12 items-center justify-center rounded-sm border border-rich-black px-5 py-3 font-semibold text-rich-black hover:border-accent-red hover:text-accent-red focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-red"
 			>
-				Ir a contacto
+				Iniciar una conversación
 			</a>
 		</nav>
 	</section>

@@ -9,17 +9,17 @@ const articles = (await getCollection("articles"))
 ---
 
 <BaseLayout
-	title="Blog | Portfolio name TO_REPLACE"
-	description="Artículos técnicos ficticios y demostrativos publicados por Portfolio name TO_REPLACE."
+	title="Blog | Alex Jhordan"
+	description="Artículos técnicos y publicaciones sobre desarrollo de software de Alex Jhordan."
 >
 	<section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20" aria-labelledby="titulo-blog">
 		<header class="max-w-3xl">
-			<p class="font-mono text-sm uppercase tracking-wide text-accent-red">Notas de demostración</p>
+			<p class="font-mono text-sm uppercase tracking-wide text-accent-red">Notas técnicas</p>
 			<h1 id="titulo-blog" class="mt-3 text-4xl font-bold tracking-tight text-rich-black sm:text-5xl">
 				Blog técnico
 			</h1>
 			<p class="mt-5 text-lg leading-8 text-rich-black/80">
-				Artículos ficticios ordenados del más reciente al más antiguo. Sustituye las publicaciones de ejemplo por contenido real antes de publicar.
+				Publicaciones sobre desarrollo web, arquitectura de software, herramientas y aprendizaje continuo, ordenadas de la más reciente a la más antigua.
 			</p>
 		</header>
 
@@ -37,7 +37,6 @@ const articles = (await getCollection("articles"))
 		) : (
 			<div class="mt-10 rounded-sm border border-dashed border-rose-quartz bg-white p-6">
 				<p class="font-semibold text-rich-black">Aún no hay artículos publicados.</p>
-				<p class="mt-2 text-rich-black/75">Añade una entrada pública a la colección de artículos para mostrarla aquí.</p>
 			</div>
 		)}
 	</section>

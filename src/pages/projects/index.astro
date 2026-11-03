@@ -16,17 +16,17 @@ const technologies = [...new Set(projects.flatMap((entry) => entry.data.technolo
 ---
 
 <BaseLayout
-	title="Proyectos | Portfolio name TO_REPLACE"
-	description="Directorio de proyectos demostrativos de Portfolio name TO_REPLACE con filtro accesible por tecnología."
+	title="Proyectos | Alex Jhordan"
+	description="Directorio de proyectos de Alex Jhordan con filtro accesible por tecnología."
 >
 	<section class="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20" aria-labelledby="titulo-proyectos">
 		<header class="max-w-3xl">
-			<p class="font-mono text-sm uppercase tracking-wide text-accent-red">Selección de demostración</p>
+			<p class="font-mono text-sm uppercase tracking-wide text-accent-red">Portafolio de desarrollo</p>
 			<h1 id="titulo-proyectos" class="mt-3 text-4xl font-bold tracking-tight text-rich-black sm:text-5xl">
 				Proyectos
 			</h1>
 			<p class="mt-5 text-lg leading-8 text-rich-black/80">
-				Explora las entradas ficticias de proyectos. El contenido mostrado debe reemplazarse por trabajo real antes de publicar.
+				Explora soluciones web, aplicaciones y experiencias técnicas organizadas por las tecnologías utilizadas.
 			</p>
 		</header>
 
@@ -100,6 +100,8 @@ const technologies = [...new Set(projects.flatMap((entry) => entry.data.technolo
 			button.classList.toggle("border-accent-red", selected);
 			button.classList.toggle("bg-accent-red", selected);
 			button.classList.toggle("text-white", selected);
+			button.classList.toggle("hover:text-white", selected);
+			button.classList.toggle("hover:text-accent-red", !selected);
 			button.classList.toggle("border-rose-quartz/70", !selected);
 			button.classList.toggle("bg-white", !selected);
 			button.classList.toggle("text-rich-black", !selected);

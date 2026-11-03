@@ -19,7 +19,7 @@ Create a fast, accessible, and maintainable static website that makes profession
 The site will include:
 
 - A home page introducing the owner and highlighting selected projects, professional experience, and recent articles.
-- An about page with biography and technical skills.
+- An about page presenting the owner's biography, technical skills, problem-solving process, and software development principles in responsive vertical sections.
 - A projects directory with technology filtering and a detail page for each project.
 - A blog directory and individual article pages.
 - A contact page with a Formspree contact form and professional profile links.

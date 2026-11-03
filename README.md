@@ -7,7 +7,7 @@ A Spanish-language personal portfolio and technical blog built with Astro. The s
 ## Planned features
 
 - Home page with an introduction, featured projects, professional experience, and recent articles.
-- About page with a biography and skills.
+- About page with biography, technical skills, problem-solving process, and development principles.
 - Project directory with technology filters and individual project pages.
 - Blog directory and Markdown article pages.
 - Contact form powered by Formspree and links to professional profiles.
@@ -78,7 +78,7 @@ Feel free to consult the [Astro documentation](https://docs.astro.build) or expl
 
 Projects, professional experience, and articles are maintained as Markdown entries in Astro content collections. Their schemas and authoring conventions are documented in [content-and-assets.md](./.github/docs/content-and-assets.md).
 
-During development, example entries and page copy may use clearly identified fictional data. Replace demo content and every `TO_REPLACE` value before production. Search the repository for `TO_REPLACE` as part of the production readiness check.
+Public content is reviewed and maintained in the source files and content collections. Any remaining configuration placeholders, including values with `TO_REPLACE`, must be replaced before production. Search the repository for `TO_REPLACE` as part of the production readiness check.
 
 The portfolio does not include a CV or downloadable resume. Project documentation, content, and public assets should not introduce a CV download requirement unless the product scope changes explicitly.
 
