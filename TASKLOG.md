@@ -168,6 +168,6 @@
   - Search the content collections and page copy for demo labels and lorem ipsum, and replace fictional examples with owner-approved content before production release.
   - Confirm every visitor-facing page and message is in Spanish and that no empty optional content produces broken layouts.
 
-- [ ] **Task 6.3: Verify the Vercel production deployment**
+- [X] **Task 6.3: Verify the Vercel production deployment**
   - Confirm the production deployment succeeds from the configured branch and that all primary routes and local assets load on the production domain.
   - Verify the production contact form endpoint, canonical URLs, page metadata, and responsive navigation after deployment.
